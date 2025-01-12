@@ -6971,5 +6971,1360 @@ Dowód powyższego twierdzenia można znaleźć w książce [11], cz. I, s. 506-
 
 \subsection{Powierzchnia w $\mathbb{R}^n$. Ekstrema warunkowe}
 
+\begin{defn}
+    Zbiór $S \subset \mathbb{R}^n$ nazywamy $k$-wymiarową gładką powierzchnią w przestrzeni $\mathbb{R}^n$ (lub $k$-wymiarową podrozmaitościa $\mathbb{R}^n$),
+    jeśli dla dowolnego punktu $x_0 \in S$ istnieje zbiór otwarty $U(x_0)$ zawierający punk $x_0 \in \mathbb{R}^n$ i dyfeomorfizm $\varphi : U(x_0) \to I^n$
+    tego zbioru otwartego na zbiór $I^n = \{ t \in \mathbb{R}^n : |t_i| < 1, i = 1, \ldots, n\}$, przy którym obraz tego zbioru $S \cap U(x_0)$ pokrywa się
+    z leżącą w $I^n$ częścią $k$-wymiarowej płaszczyzny przestrzeni $\mathbb{R}^n$ opisanej równaniami $t^{k+1} = 0, \ldots, t^n = 0$. 
+
+    Stopniem gładkości powierzchni $S$ będziemy nazywali stopień gładkości dyfeomorfizmu $\varphi$.
+
+    Rola liczby $1$ w powyższej definicji jest tylko czysto umowna. 
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Przesztrzeń $\mathbb{R}^n$ jest $n$-wymiarową powierzchnią klasy $C^\infty$. Podprzestrzeń przestrzeni $\mathbb{R}^n$
+            opisana przy pomocy równości $x^{k+1}=\ldots=x^n=0$ jest $k$-wymiarową podrozmaitościa przestrzeni $\mathbb{R}^n$.
+        \item [(b)]
+            Zbiór punktów przestrzeni $\mathbb{R}^n$ opisany układem równań
+            \[
+                \begin{cases}
+                    a_1^1x_1 + \ldots + a^1_k x_k + \ldots + a^1_n x_n = 0 \\
+                    \ldots \\ 
+                    a_1^{n-k}x_1 + \ldots + a_k^{n-k}x_k + \ldots + a^{n-k}_n = 0
+                \end{cases}
+            \]
+            przy założeniu, że rząd powyższego układu jest równy $n-k$ jest $k$-wymiarową podrozmaitością w $\mathbb{R}^n$.
+        \item [(c)]
+            Okrąg $x^2+y^2=1$ w $\mathbb{R}^2$ jest jednowymiarową podrozmaitością w $\mathbb{R}^2$.
+        \item [(d)]
+            Niech $F_i(x_1, \ldots, x_n)$ ($i = 1, \ldots, n-k)$ będzie układem funkcji $C^1$ rzędu $n-k$. Pokażemy, że układ równań
+            \[
+                \begin{cases}
+                    F_1(x_1, \ldots, x_k, x_{k+1}, \ldots, x_n) = 0 \\
+                    \vdots \\
+                    F_{n - k}(x_1, \ldots, x_k, x_{k+1}, \ldots, x_n) = 0
+                \end{cases}
+            \]
+            określa w przestrzeni $\mathbb{R}^n$ $k$-wymiarową powierzchnię $S$. \\
+            Niech w punkcie $x_0 \in S$ będzie spełniony warunek 
+            \setcounter{equation}{158}
+            \begin{equation}\label{eq:159}
+                \left|
+                \begin{array}{ccc}
+                    \frac{\partial F_1}{\partial x_{k+1}} & \cdots & \frac{\partial F_1}{\partial x_n} \\
+                    \vdots & \ddots & \vdots \\
+                    \frac{\partial F_{n-k}}{\partial x_{k+1}} & \cdots & \frac{\partial F_{n-k}}{\partial x_n}
+                \end{array}
+                \right|(x_0) \neq 0.
+            \end{equation}
+            Wówczas na mocy twierdzenia o funkcji odwrotnej przekształcenie
+            \[
+                \begin{cases}
+                    t_i = x_i \quad (i = 1, \ldots, k) \\
+                    t_i = F_{i-k}(x_1, \ldots, x_n) \quad (i = k+1, \ldots, n)
+                \end{cases}
+            \]
+            jest dyfeomorfizmem pewnego otoczenia rozpatrywanego punktu. Dla wyjściowego układu we współrzędnych $t_1, \ldots, t_n$ będziemy mieli 
+            $t_{k+1} = \ldots, = t_n = 0$. W ten sposób zbiór $S$ jest $k$-wymiarową gładką powierzchnią $\mathbb{R}^n$.
+        \item [(e)]
+            Niech $G \subset \mathbb{R}^k$ będzie obszarem i niech $f : G \to \mathbb{R}^n$ będzie odwzorowaniem klasy $C_1$, określonym przy pomocy składowych równościami 
+            \begin{equation}\label{eq:160}
+                \begin{cases}
+                    x_1 = f_1(t_1, \ldots, t_k), \\
+                    \ldots \\
+                    x_n = f_n(t_1, \ldots, t_k).
+                \end{cases}
+            \end{equation}
+            Załóżmy, że dla punktu $t_0 \in G$ rząd przekształcenia $f$ jest równy $k$ (oczywiście $k \leqslant n$). Istnieje
+            taki zbiór otwarty $U(t_0) \subset G$, $t \in U(t_0)$, że obraz $f(U(t_0))$ można opisać równościami 
+            \begin{equation}\label{eq:161}
+                \begin{cases}
+                    x_{k+1}=\varphi_{k+1}(x_1, \ldots, x_k), \\
+                    \ldots \\ 
+                    x_n = \varphi_n(x_1, \ldots, x_k)
+                \end{cases}
+            \end{equation}
+            (dla uproszczenia zapisu przyjeliśmy, że już układ funkcji $f_1, \ldots f_k$ posiada rząd $k)$. Kładąc
+            \[
+                F_i(x_1, \ldots, x_n) = x_{k+1} - \varphi_{k+1}(x_1, \ldots, x_k) \quad (i=1, \ldots, n-k),
+            \]
+            możemy zapisać układ (\ref{eq:161}) w postaci \ref{eq:159}. Ponieważ warunek (\ref{eq:159}) jest spełniony, zatem na mocy punktu (d) zbiór $f(U(t_0))$
+            jest $k$-wymiarową gładką powierzchnią w $\mathbb{R}^n$.
+        \item [(f)]
+            Wykres funkcji $C^1$, określonej w pewnym obszarze $G \subset \mathbb{R}^{n-1}$ równośćia 
+            $x_n = f(x_1, \ldots, x_{n-1})$ jest $n-1$-wymiarową gładką powierzchnią w $\mathbb{R}^n$. Istotnie kładąc 
+            \[
+                \begin{cases}
+                    t_i = x_i \quad (i = 1, \ldots, n-1,) \\
+                    t_n = x_n - f(x_1, \ldots, x_n)
+                \end{cases}
+            \]
+            otrzymujemy układ współrzędnych, w którym wykres funkcji $f$ posiada równananie $t_n = 0$ (por. Definicja \ref{def:153}, Uwaga \ref{uwaga:85})
+    \end{itemize}
+\end{ex}
+
+Wprowadzimy teraz pojęcie przestrzeni stycznej do powierzchni $S$ w punkcie $x_0 \in S$. Z Definicji \ref{def:163} wynika, że w otoczeniu dowolnego punktu 
+$x_0 \in S$, $k$-wymiarowa powierzchnia $S$ może być określona parametrycznie przy pomocy przekształcenia $I^k \ni (t_1, \ldots t_k) \to (x_1, \ldots, x_n) \in S$.
+W charakterze takiego odwzorowania można wziąc obcięcie funkcji $\varphi^{-1} : I^n \to U(x_0)$ do $k$-wymiarowej płaszczyzny $t^{k+1} = \ldots = t^n = 0$.
+
+Ponieważ $\varphi^{-1}$ jest dyfeomorfizmem, zatem jakobian odwzorowania $\varphi^{-1} : I_n \to U(x_0)$ w dowolnym punkcie zbioru $I_n$ jest rózny od zera.
+Wówczas rząd przekształcenia $I^k \ni (t_1, \ldots, t_k) \to (x_1, \ldots, x_n) \in S$ otrzymanego przez obcięcie $\varphi^{-1}$ do wskazanej 
+płaszczyzny, powinien być rowny $k$ dla dowolnego punktu zbioru $I^k$. 
+
+Kładąc teraz $(t_1, \ldots, t_k) = t \in I^k$ oznaczając odwzorowanie $I^k \ni t \to x \in S$ przez $x = x(t)$, otrzymujemy lokalne parametryczne przedstawienie powierzchni $S$.
+
+\begin{defn}
+    Jeśli $k$-wymiarowa powierzchnia $S \subset \mathbb{R}^n$, $1 \leqslant k \leqslant n$, w otoczeniu punktu $x_0 \in S$ jest określona parametrycznie przy
+    pomocy odwzorowania klasy $C^1$, $(t_1, \ldots, t_k) = t \to x = (x_1, \ldots, x_n)$ takiego, że $x_0 = x(0)$ oraz macierz $[x'(0)]$ posiada rząd $k$, to 
+    $k$-wymiarowa płaszczyzna w $\mathbb{R}^n$, określona parametrycznie przy pomocy równośći 
+    \begin{equation}\label{eq:162}
+        x - x_0 = x'(0)t
+    \end{equation}
+    nazywa się płaszczyzną styczną lub przestrzenią styczną do powierzchni $S$ w punkcie $x_0 \in S$.
+\end{defn}
+
+Przestrzeń styczną do powierzchni $S$ w punkcie $x \in S$ będziemy oznaczali symbolem $TS_x$ lub $T_x(S)$.
+Zbiór $TS_x$ możemy traktować jako zbiór wszystkich wektorów zaczepionych w punkcie $x \in \mathbb{R}^n$.
+
+Zapisując równość (\ref{eq:162}) przy pomocy współrzędnych otrzymujemy układ równań 
+\begin{equation}\label{eq:163}
+    \begin{cases}
+        x_1 - x_1^0 = \frac{\partial x_1}{\partial t_1}(0)t_1 + \ldots + \frac{\partial x_j}{\partial x_k}(0)t_k, \\ 
+        \vdots \\
+        x_n - x_n^0 = \frac{\partial x_n}{\partial t_1}(0)t_1 + \ldots + \frac{\partial x_n}{\partial t_k}(0)t_k.
+    \end{cases}
+\end{equation}
+
+W szczególności jeśli $z = f(x,y)$ jest funkcją klasy $C^1$ (wystarczałaby tylko różniczkowalność), określoną w pewnym obszarze $G \subset \mathbb{R}^2$,
+to równanie płaszczyzny stycznej do wykresu tej funkcji w punkcie $(x_0, y_0, f(x_0, y_0))$ (zob. (\ref{eq:135})) możemy zapisać w postaci 
+\[
+    \begin{pmatrix}
+        x - x_0 \\
+        y - y_0 \\
+        z - z_0
+    \end{pmatrix}
+        =
+    \begin{bmatrix}
+        1 & 0 \\
+        0 & 1 \\
+        \frac{\partial f}{\partial x}(x_0, y_0) & \frac{\partial f}{\partial y}(x_0, y_0)
+    \end{bmatrix}
+    \begin{pmatrix}
+        x - x_0 \\
+        y - y_0
+    \end{pmatrix}
+\]
+Niech $\varphi(x,y,z) = (t_1, t_2, t_3)$, gdzie $t_1 = x, t_2 = y, t_3 = z - f(x,y)$. Jest to odwzorowanie różnowartościowe, ciągłe oraz dla dowolnego $(x,y,z)$
+\[
+    J_\varphi(x,y,z) = \left|
+    \begin{array}{ccc}
+    1 & 0 & 0 \\
+    0 & 1 & 0 \\
+    \frac{\partial f}{\partial x}(x,y) & \frac{\partial f}{\partial y}(x, y) & 1
+    \end{array}
+    \right| = 1.
+\]
+Mamy $\varphi^{-1}(t_1, t_2, t_3) = (x,y,z)$< gdzie $x = t_1, y = t_2, z = t_3 + f(t_1, t_2)$.
+Wobec twierdzenia podanego w Uwadze \ref{uwaga:86} (a) odwzorowanie $\varphi^{-1}$ jest różniczkowalne.
+Obcinając $\varphi^{-1}$ do płaszczyzny $t_3 = 0$ otrzymujemy $\varphi^{-1}(t_1, t_2) = (t_1, t_2, f(t_1, t_2))$.
+
+\begin{uwaga}
+    Można pokazać, że równanie płaszczyzny stycznej do $k$-wymiarowej powierzchni $S$, która jest opisana w $\mathbb{R}^n$ układem (\ref{eq:159}), posiada następującą postać
+    \[
+        F'(x_0)(x - x_0) = 0.
+    \]
+\end{uwaga}
+Rozpisując powyższe równanie przy pomocy współrzędnych otrzymujemy następujący układ równań:
+\[
+    \begin{cases}
+        \frac{\partial F_1}{\partial x_1}(x_0)(x_1 - x_1^0) + \ldots + \frac{\partial F_1}{\partial x_n}(x_0)(x_n - x_n^0) = 0, \\
+        \vdots \\
+        \frac{\partial F_{n-k}}{\partial x_1}(x_0)(x_1 - x_1^0) + \ldots + \frac{\partial F_{n-k}}{\partial x_n}(x_0)(x_n - x_n^0) = 0
+    \end{cases}
+\]
+(w powyższym zakładamy, że w otoczeniu rozpatrywanego punktu $x_0 \in S$ spełniony jest warunek (\ref{eq:159})).
+
+Można udowodnić następujące twierdzenie, którego przypadek szczególny wystąpił przed Definicją \ref{def:158}.
+
+\begin{theorem}
+{
+    Przestrzeń $TS_{x_0}$ styczna do gładkiej powierzchni $S \subset \mathbb{R}^n$ w punkcie $x_0 \in S$ składa się z wektorów stycznych 
+    w punkcie $x_0$ do krzywych gładkich, których obrazy znajdują się na powierzchni $S$ i zawierają punkt $x_0$.
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc np. w książce [11], s. 521-522.
+
+\newpage
+
+Zajmiemy się teraz zagadnieniem znajdowania ekstremów warunkowych. W ogólnym przypadku zadanie znalezienia ekstremum warunkowego polega na tym, aby znaleźc ekstrema funkcji o wartościach rzeczywistych 
+\[
+    y = f(x_1, \ldots, x_n)
+\]
+$n$ zmiennych przy założeniu, że te zmienne spełniają układ równań 
+\setcounter{equation}{169}
+\begin{equation}\label{eq:170}
+    \begin{cases}
+        F_1(x_1, \ldots, x_n) = 0 \\ 
+        \vdots \\
+        F_m(x_1, \ldots, x_n) = 0
+    \end{cases}
+\end{equation}
+
+Będziemy zakładali, że wszystkie rozpatrywane funkcję są różniczkowalne w sposób ciągły. Jeśli rząd układu $F_1, \ldots, F_m$ jest równy $k$, to 
+warunku (\ref{eq:170}) określają w przestrzeni $\mathbb{R}^n$ pewną $k$ wymiarową powierzchnię gładką $S$. Wobec tego z geometrycznego punktu widzenia zadanie
+znalezenia ekstremum warunkowego polega na znalezeniu ekstremum funkcji $f$ na powierzchni $S$. 
+
+Samo pojęcie ekstremum lokalnego pozostaje przy tym niezmienione, to znaczy punkt $x_0 \in S$ jest lokalnym ekstremum funkcji $f$ na $S$ lub krócej funkcji $f|_S$, jeśli 
+istnieje otoczeniu $U_S(x_0)$ punktu $x_0$ w zbiorze $S \subset \mathbb{R}^n$ (to znaczy $U_S(x_0) = S \cap U(x_0)$, gdzie $U(x_0)$ jest otoczeniem punktu $x_0$ w $\mathbb{R}^n$)
+takie, że dla każdego punktu $x$ z tego otoczenia spełniona jest nierówność $f(x) \geqslant f(x_0)$ (wówczas $x_0$ jest punktem lokalnego minimum), lub nierówność $f(x) \leqslant f(x_0)$
+(wówczas $x_0$ jest punktem lokalnego maksimum). Jeśli ponadto dla $x \in U_S(x_0) \setminus \{x_0\}$ wskazane nierówności są silne, to ekstrema nazywać będziemy silnymi
+(w przypadku przeciwnym --- słabymi).
+
+Udowodnimy teraz warunek konieczny na istnienie ekstremum warunkowego.
+
+\begin{theorem}
+    {
+        Niech $f : E \to \mathbb{R}$ będzie funkcją określona na zbiorze otwartym $E \subset \mathbb{R}^n$ i niech $f \in C^1(E, \mathbb{R})$. Ponadto załóżmy,
+        że $S$ jest powierzchnią gładką, zawartą w $E$. Na to, aby punkt $x_0 \in S$ będący punktem niekrytycznym (inaczej niestacjonarnym) dla funkcji $f$, był punktem lokalnego
+        ekstremum dla funkcji $f|_S$, koniecznie jest spełnienie warunku:
+        \begin{equation}\label{eq:171}
+            TS_{x_0} \subset TN_{x_0}
+        \end{equation}
+        gdzie $TS_{x_0}$ jest przestrzenią styczną do powierzchni $S$ w punkcie $x_0$, a $TN_{x_0}$ jest powierzchnią styczną do powierzchni $N = \{ x \in E : f(x) = f(x_0)\}$.
+    }
+\end{theorem}
+
+Gdyby $S$ było $n$-wymiarową powierzchnią gładką zawartą w $E$, to otrzymalibyśmy znane już zagadnienie znajdowania ekstremów funkcji wielu zmiennych.
+Zakładamy więc, że $S$ jest powierzchnią maksymalnie $(n-1)$-wymiarową. Wobec Uwagi \ref{uwaga:93} (a) możemy założyć, że $f'(x) \neq 0$ dla każdego $x \in E$.
+Zbiór $N = \{ x \in E : f(x) = f(x_0)\}$ jest $(n-1)$-wymiarową powierzchnią zawartą w $E$. Wystarczy przyjąc $F(x) = f(x) - f(x_0)$ dla $x \in E$ i powołać się na Przykład \ref{ex:59} (b).
+
+\begin{proof}
+    Rozważmy dowolny wektor $\xi \in TS_{x_0}$ i taką gładką drogę $x = x(t)$, której obraz znajduję się na $S$, $x(0) = x_0$ oraz 
+    \[
+        \frac{dx}{dt}(0) = \xi.
+    \]
+    Jeśli w punkcie $x_0$ funkcja $f|_S$ posiada ekstremum, to funkcja gładka $f(x(t))$ powinna mięc ekstremum przy $t = 0$. Na mocy warunku koniecznego na istnienie ekstremum
+    (Twierdzenie 58) powinien być spełniony warunek 
+    \begin{equation}\label{eq:172}
+        f'(x_0)\xi = 0,
+    \end{equation}
+    gdzie $f'(x_0) = \Big(\frac{\partial f}{\partial x_1}(x_0), \ldots, \frac{\partial f}{\partial x_n}(x_0)\Big)$ oraz $\xi = (\xi_1, \ldots, x_n)$.
+
+    Ponieważ $x_0$ jest punktem niekrytycznym dla funkcji $f$, zatem warunek (\ref{eq:172}) jest równoważny temu, że $\xi \in TN_{x_0}$, ponieważ 
+właśnie równość (\ref{eq:172}) jest równaniem przestrzeni stycznej $TN_{x_0}$ (zob. Uwaga 92 oraz Przykład \ref{ex:60} (d)). W ten sposób pokazaliśmy, że $TS_{x_0} \subset TN_{x_0}$.
+\end{proof}
+
+\begin{uwaga}
+    \begin{itemize}
+        \item [(a)] W Twierdzeniu \ref{theorem:228} założenie, że $x_0$ nie jest punktem stacjonarnym funkcji $f$, nie stanowi istotnego ograniczenia.
+            Jeśli bowiem punkt $x_0 \in E$ jest punktem stacjonarnym funkcji $f$, to jest jasne, że punkt $x_0$ może być punktem, w którym 
+            funkcja $f|_S$ może osiągać ekstremum.
+        \item [(b)]
+            Jeśli powierzchnia $S$ w otoczeniu punktu $x_0$ jest określona przez układ \ref{eq:170}, to przestrzeń $TS_{x_0}$ jest opisana przez układ równań liniowych
+            \begin{equation}\label{eq:173}
+                \begin{cases}
+                    \frac{\partial F_1}{\partial x_1}(x_0)\xi_1 + \ldots + \frac{\partial F_1}{\partial x_n}\xi_n = 0, \\
+                    \vdots \\
+                    \frac{\partial F_m}{\partial x_1}(x_0)\xi_1 + \ldots + \frac{\partial F_m}{\partial x_n}\xi_n = 0
+                \end{cases}
+            \end{equation}
+            (zob. Uwaga \ref{uwaga:92}). Przestrzeń $TN_{x_0}$ jest opisana równaniem 
+            \begin{equation}\label{eq:174}
+                \frac{\partial f}{\partial x_1}(x_0)\xi_1 + \ldots + \frac{\partial f}{\partial x_n}\xi_n = 0.
+            \end{equation}
+            Ponieważ z (\ref{eq:171}) wynika, że każde rozwiązanie układu (\ref{eq:173}) jest rozwiązaniem równania (\ref{eq:174}), 
+            zatem wektor $grad \, f(x_0)$ jest liniową kombinacją wektorów $grad \, F_i(x_0)$ ($ i = 1, \ldots, m)$, czyli 
+            \begin{equation}\label{eq:175}
+                grad \, f(x_0) = \sum_{i=1}^{m}\lambda_i grad \, F_i(x_0)
+            \end{equation}
+            (zob. A. Białynicki-Birula, Algebra liniowa z geometrią, PWN, Warszawa, 1976, Wniosek 4.9, s. 151).
+    \end{itemize}
+\end{uwaga}
+
+\begin{defn}
+    Funkcję $n + m$ zmiennych $(x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_m) = (x, \lambda)$ postaci
+    \begin{equation}\label{eq:176}
+        L(x, \lambda) = f(x) - \sum_{i=1}^{m}\lambda_i F_i(x)
+    \end{equation}
+    nazywamy funkcją Lagrange'a.
+\end{defn}
+
+Opiszemy teraz metodę znajdywania ekstremów warunkowych zwaną metodą czynników nieoznaczonych Lagrange'a. Otóz warunki konieczne na istnienie ekstremum funkcji
+(\ref{eq:176}) jako funkcji zmiennych $x_1, \ldots, x_n, \lambda_1, \ldots, \lambda_n$ pokrywają się z warunkami (\ref{eq:170}) i (\ref{eq:175}). Rzeczywiście 
+\[
+    \begin{cases}
+        \frac{\partial L}{\partial x_j}(x, \lambda) = \frac{\partial f}{\partial x_j}(x) - \sum_{i=1}^{m}\lambda_i \frac{\partial F_i}{\partial x_j}(x) = 0, \quad (j = 1, \ldots, n) \\
+        \frac{\partial L}{\partial \lambda_i}(x, \lambda) = F_i(x) = 0 \quad (i = 1, \ldots, m)
+    \end{cases}
+\]
+
+Jak wynika z (\ref{eq:175}) czynniki $\lambda_i$ ($ i = 1, \ldots, m$) są wyznaczone jednoznacznie, jeśli tylko wektory $ grad \, F_i(x_0)$ ($i = 1, \ldots, m)$ są liniowo niezależne.
+Niezależnośc tych wektorów oznacza, że rząd układu (\ref{eq:173}) jest równy $m$ (czyli żadne z równań tego układu nie wynika z pozostałych).
+Ten warunek zwykle jest spełniony, bowiem zakłada się, że rząd układu (\ref{eq:170}) funkcji $F_1, \ldots, F_m$ jest równy $m$ w dowolnym punkcie $x \in S$. 
+
+Funkcja Langrange'a (\ref{eq:175}) można również zapisać w postaci 
+\[
+    L(x, \lambda) = f(x) + \sum_{i=1}^{m}\lambda_i F_i(x).
+\]
+
+Następujące twierdzenie podaje warunek dostateczny na istnienie i nieistnienie ekstremum warunkowego.
+
+\begin{theorem}
+    Niech $f : E \to \mathbb{R}$ będzie funkcją określona na zbiorze otwartym $E \subset \mathbb{R}^n$ i niech $f \in C^2(E, \mathbb{R})$.
+    Ponadto niech $S$ będzie powierzchnią zawartą w $E$, opisana przy pomocy układu równań (\ref{eq:170}), gdzie $F_i \in C^2(E, \mathbb{R})$. ($i = 1, \ldots, m)$ oraz
+    rząd układu funkcji $\{F_1, \ldots, F_m\}$ w dowolnym punkcie zbioru $E$ jest równy $m$.
+    
+    Załóżmy, że w funkcji Langrange'a (\ref{eq:176}) parametry $\lambda_1, \ldots, \lambda_m$ zostały tak wybrane, że zachodzi (\ref{eq:175})
+    (to znaczy spełniony jest warunek konieczny na istnienie ekstremum funkcji $f|_S$ w punkcie $x_0 \in S$).
+
+    Na to, by funkcja $f|_S$ posiadała w punkcie $x_0$ ekstremum wystarcza, by forma kwadratowa
+    \begin{equation}\label{eq:177}
+        d^2 L(x_0)(\xi) = \sum_{i,j=1}^{n}\frac{\partial ^2 L}{\partial x_i \partial x_j}(x_0)(\xi_i)(\xi_j)
+    \end{equation}
+    była określona dla wektotów $\xi \in TS_{x_0}$. 
+
+    Jeśli forma (\ref{eq:177}) jest dodatio określona na $TS_{x_0}$, to $x_0$ jest punktem silnego lokalnego minimum funkcji $f|_S$.
+    Jeśli forma (\ref{eq:177}) jest dodatio określona na $TS_{x_0}$, to $x_0$ jest punktem silnego lokalnego maksimum funkcji $f|_S$.
+
+    Na to, by funkcja $f|_S$ nie posiadała w punkcie $x_0$ ekstremum wystarcza, by forma (\ref{eq:177}) przyjmowała na $TS_{x_0}$ wartości różnych znaków.
+\end{theorem}
+
+Dowód powyższego można znaleźć np. w książce [11], s. 529-531.
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Pokażemy na przykładzie, że Twierdzenie \ref{theorem:228} jest tylko warunkiem koniecznym na istnienie ekstremum warunkowego. Niech 
+            \[
+                f(x,y) = y, \quad F(x,y) = x^3 - y = 0.
+            \]
+            Wówczas jest jasne, że na krzywej $S \in \mathbb{R}^2$, opisanej równaniem $y = x^3$ wielkość $y$ nie posiada ekstremum w punkcie $(0,0)$, chociaż dla tego 
+            punktu zachodzi
+            \[
+                TS_{x_0} \subset TN_{x_0}
+            \]
+            Zauważmy ponadto, że $grad \, f(0,0) = (0, 1) \neq 0$.
+        \item [(b)]
+            Niech $f : \mathbb{R}^2 \to \mathbb{R}$ będzie funkcją określoną wzorem $f(x,y) = x^2 - y^2$. Znajdziemy jej ekstrema na prostej o równaniu $2x - y - 3 = 0$. 
+            Rozwiązując układ równań 
+            \[
+                \begin{cases}
+                    \frac{\partial L}{\partial x}(x,y,\lambda) = 2x - 2\lambda = 0, \\
+                    \frac{\partial L}{\partial y}(x,y,\lambda) = -2y + \lambda = 0, \\
+                    \frac{\partial L}{\partial \lambda}(x,y,\lambda) = -(2x - y - 3) = 0,
+                \end{cases}
+            \]
+            gdzie $L(x,y,\lambda) = x^2 - y^2 - \lambda(2x-y-3)$, znajdujemy punkty ,,podejrzany'' $p = (2,1)$. Tworzymy formę kwadratową 
+            \[
+                d^2L(p)(\xi) = 2{(\xi_1)}^2 - 2{(\xi_2)}^2.
+            \]
+            Zapiszmy warunek $\xi \in TS_p : 2\xi_1 - \xi_2 = 0$. W ten sposó na przestrzeni $TS_p$ mamy 
+            \[
+                d^2L(p)(\xi) = -3{(\xi_1)}^2,
+            \]
+            zatem forma ta jest ujemnie określona. Stąd wnioskujemy, że punkt $p = (2,1)$ jest punktem lokalnego maksimum funkcji $f|_S$. 
+    \end{itemize}
+\end{ex}
+
+\newpage
+
+\section{Całka z parametrem}
+\subsection{Całki właściwe zależne od parametru}
+
+\begin{defn}
+    Niech $f(x,t)$ będzie funkcją o wartościach rzeczywistych, określoną na prostokącie $P = [a,b] \times [c,d] \subset \mathbb{R}^2$. $R$-całkowalna względem zmiennej $x \in [a,b]$ dla
+    każdego $t \in [c,d]$. Przyporządkowując każdemu $t \in [c,d]$ liczbę 
+    \[
+        I(t) = \int_{a}^{b}f(x,t)dx,
+    \]
+    określamy funkcję $I$ w przedziale $[c,d]$. Funkcję te nazywamy całką właściwą zależną od parametru $t$.
+\end{defn}
+
+\begin{theorem}
+{
+    (o ciągłości całki właściwej zależnej od parametru) Jeżeli $f$ jest funkcją ciągłą w prostokącie $P = [a,b] \times [c,d]$, to całka 
+    \[
+        I(t) = \int_{a}^{b}f(x,t)dx
+    \]
+    zależna od parametru $t$, jest funkcją ciągłą w przedziale $[c,d]$.
+}
+\end{theorem}
+
+\begin{proof}
+    Jeżeli $f$ jest funkcją ciągłą, zatem wobec zwartości zbioru $P$ (zob. Twierdzenie \ref{theorem:176}) jest ona jednostajnie ciągła. (zob. Twierdzenie \ref{theorem:189})
+    Dla każdego $\varepsilon > 0$ istnieje, więc takie $\delta > 0$, że jeżeli $x_1, x_2 \in [a,b]$, $t_1,t_2 \in [c,d]$ i $|x_1 - x_2| < \delta$, $|t_1 - t_2| < \delta$, to 
+    \[
+        |f(x_1, t_1) - f(x_2, t_2)| < \frac{\varepsilon}{(b-a)}.
+    \]
+    Stąd 
+    \[
+        |I(t_1) - I(t_2)| \leqslant \int_{a}^{b}|f(x, t_1) - f(x, t_2)|dx < \varepsilon.
+    \]
+    skoro tylko $|t_1 - t_2| < \delta$. Wobec tego funkcja $f$ jest jednostajnie ciągła w $[c,d]$.
+\end{proof}
+
+\begin{theorem}
+{
+    (o pochodnej całki właściwej zależnej od parametru) Niech $f$ będzie funkcją ciągłą w prostokącie $P = [a,b] \times [c,d]$ i niech 
+    na tym prostokącie ma ciągłą pochodną cząstkową $\frac{\partial f}{\partial t}$.
+    Wtedy całka $I(t) = \int_{a}^{b}f(x,t)dx$ zależna od parametru $t$, ma pochodną $I'$ ciągłą w $[c,d]$ oraz 
+    \[
+        I'(t) = \int_{a}^{b}\frac{\partial f}{\partial t}(x,t)dx.
+    \]
+}
+\end{theorem}
+
+\begin{proof}
+    Ponieważ funkcja $\frac{\partial f}{\partial t}$ jest ciągła w $P$, więc na podstawie Twierdzenia \ref{theorem:230}, całka
+    $\int_{a}^{b}\frac{\partial f}{\partial t}(x,t)dx$ jest funkcją ciągłą zmiennej $t$. Wystarczy więc udowodnić, że $\lim_{h \to 0}\Delta h = 0$,
+    gdzie 
+    \[
+        \Delta(h) = \frac{I(t+h) - I(t)}{h} - \int_{a}^{b}\frac{\partial f}{\partial t}(x,t)dx.
+    \]
+    (dla $t = c$ rozważąmy granicę prawostronną, dla $t = d$, lewostronną). Mamy jednak
+    \[
+        \Delta(h) = \int_{a}^{b}\Big(\frac{f(x, t+h) - f(x,t)}{h} - \frac{\partial f}{\partial t}(x,t)\Big)dx
+    \]
+    Stosując Twierdzenie Langrange'a o Wartości Średniej względem zmiennej $t$ stwierdzamy, że istnieje taka liczba $\theta$ zależna od $x,t$ i $h$, że 
+    $0 < \theta < 1$ oraz 
+    \[
+        \frac{f(x, t+h) - f(x,t)}{h} = \frac{\partial f}{\partial t}(x,t + \theta h). 
+    \]
+    Stąd 
+    \[
+        |\Delta(h)| \leqslant \int_{a}^{b}\Big|\frac{\partial f}{\partial t}(x, t + \theta h) - \frac{\partial f}{\partial t}(x,t)\Big|dx
+    \]
+    Ponieważ pochodna $\frac{\partial f}{\partial t}$ jest jednostajnie ciągła na $P$, zatem dla każdego $\varepsilon > 0$
+    istnieje takie $\delta > 0$, że jeżeli $x_1, x_2 \in [a,b]$, $t_1, t_2 \in [c,d]$ i $|x_1 - x_2| < \delta, |t_1 - t_2| < \delta$, to 
+    \[
+        \Big| \frac{\partial f}{\partial t}(x_1, t_1) - \frac{\partial f}{\partial t}(x_2, t_2)\Big| < \frac{\varepsilon}{b-a}.
+    \]
+    Obierzmy $h > 0$ takie, że $|h| < \delta$ i $t + h \in [c,d]$. Wtedy także $|\theta h| < \delta$, więc 
+    \[
+        \Big|\frac{\partial f}{\partial t}(x, t + \theta h) - \frac{\partial f}{\partial t}(x,t)\Big| < \frac{\varepsilon}{b-a},
+    \]
+    a stąd 
+    \[
+        |\Delta(h)| \leqslant \int_{a}^{b}\frac{\varepsilon}{b-a} = \varepsilon.
+    \]
+    Wobec tego $\Delta(h) \to 0$ przy $h \to 0$.
+\end{proof}
+
+\setcounter{equation}{178}
+
+\begin{theorem}
+{
+    (o zamianie kolejności całkowania) Niech funkcja $f$ będzie funkcją na prostokącie $P$. Wówczas 
+    \begin{equation}\label{eq:179}
+        \int_{c}^{d}\Big( \int_{a}^{b}f(x,t)dx\Big)dt = \int_{a}^{b}\Big(\int_{c}^{d}f(x,t)dt \Big)dx
+    \end{equation}
+}
+\end{theorem}
+
+\begin{proof}
+    Ponieważ funkcja $f$ jest ciągła, zatem wobec Twierdzenia \ref{theorem:230} obydwie całki występujące we wzorze (\ref{eq:179}) istnieją
+    (oczywiście istnieją również, gdy zamiast $d$ wstawimy $\eta$, gdzie $c \leqslant \eta \leqslant d$). Udowodnimy teraz równośc ogólniejszą
+    \begin{equation}\label{eq:180}
+        \int_{c}^{\eta}\Big( \int_{a}^{b}f(x,t)dt\Big)dt = \int_{a}^{b}\Big( \int_{c}^{\eta}f(x,t)dt\Big)dx
+    \end{equation}
+    Po obu stronach równości \ref{eq:180} są funkcje parametru $\eta$. Obliczmy ich pochodne względem $\eta$. 
+    W zewnętrznej całce z lewejs strony pod całką jest funkcja $I(t)$ ciągła względem $t$ na mocy Twierdzenia \ref{theorem:230}.
+    Wobec tego pochodna tej całki względem granicy górnej jest równa funkcji podcałkowej przy $t = \eta$, a więc jest równa całce
+    \[
+        I(\eta) = \int_{a}^{b}f(x, \eta)dx.
+    \]
+    Z prawej strony równości (\ref{eq:180}) występuje całka 
+    \[
+        \int_{a}^{b}\varphi(x,\eta)dx, \quad \text{gdzie} \quad \varphi(x,\eta) = \int_{c}^{\eta}f(x,t)dt.
+    \]
+    Zauważmy, że funkcja $\varphi(x, \eta)$ jest ciągła względem zmiennej $x$ (zob. Twierdzenie \ref{theorem:230}) oraz jej pochodna cząstkowa 
+    \[
+        \frac{\partial \varphi}{\partial \eta}(x,\eta) = f(x, \eta)
+    \]
+    jest funkcją ciągłą dwóch zmiennych. Wnioskujemy stąd, że funkcja $\varphi(x, \eta)$ jest ciągła jako funkcja dwóch zmiennych. 
+    Wnioskujemy stąd, że funkcja $\varphi(x, \eta)$ jest ciągła jako funkcja dwóch zmiennych. Zauważmy bowiem, że $|\frac{\partial \varphi}{\partial \eta}(x, \eta)| \leqslant M$
+    oraz 
+    \[
+        \begin{aligned}
+            |\varphi(x_1, \eta_1) - \varphi(x_2, \eta_2) &\leqslant |\varphi(x_1, \eta_1) - \varphi(x_2, \eta_1)| + |\varphi(x_2, \eta_1) - \varphi(x_2, \eta_2) \\
+            &\leqslant |\varphi(x_1, \eta_1) - \varphi(x_2, \eta_1)| + M|\eta_1 - \eta_2|
+        \end{aligned}
+    \]
+    Wobec tego możemy stosować Twierdzenie \ref{theorem:231}.
+    \[
+        \frac{d}{d \eta}\int_{a}^{b}\varphi(x, \eta)dx = \int_{a}^{b}\frac{\partial \varphi}{\partial \eta}(x, \eta)dx = \int_{a}^{b}f(x, \eta)dx = I(\eta).
+    \]
+    Obie strony równości (\ref{eq:180}) mają zatem równe pochodne względem $\eta$ i tym samym mogą różnić się conajwyżej o stałą.
+    Gdy $\eta = c$ obie strony są równe zeru, zatem muszą być tożsamościowo równe dla wszystkich wartości $\eta$. Równość (\ref{eq:180}) jest więc udowodniona.
+    Dla $\eta = d$ otrzymujemy z niej w szczególności równość (\ref{eq:170}).
+\end{proof}
+
+Twierdzenia \ref{theorem:230} i \ref{theorem:231} można uzyskać także w przypadku, gdy granice całkowania $a$ i $b$ są funkcjami parametru $t$. 
+
+\begin{theorem}
+{
+    Niech funkcja $f$ będzie funkcją ciągłą w prostokącie $P$ i niech $\phi, \psi$ będą funkcjami ciągłymi w przedziale $[c,d]$ takimi, że 
+    $a \leqslant \phi(t) \leqslant \psi(t) \leqslant b$ dla $t \in [c,d]$. Wtedy całka 
+    \begin{equation}\label{eq:181}
+        I(t) = \int_{\phi(t)}^{\psi(t)}f(x,t)dx
+    \end{equation}
+    jest funkcją ciągłą w przedziale $[c,d]$.
+}
+\end{theorem}
+
+\begin{theorem}
+{
+    Niech funkcja $f$ będzie funkcją ciągłą w prostokącie $P$ i posiada w nim ciągłą pochodną $\frac{\partial f}{\partial t}$. Niech
+    $\phi, \psi$ bedą funkcjami różniczkowalnymi w przedziale $[c,d]$ takimi, że $a \leqslant \phi(t) \leqslant \psi(t) \leqslant b$ dla $t \in [c,d]$.
+    Wtedy całka (\ref{eq:181}) jest funkcją rózniczkowalną w przedziale $[c,d]$ oraz jej pochodna wyraza się wzorem 
+    \[
+        I'(t) = \int_{\phi(t)}^{\psi(t)}\frac{\partial f}{\partial t}(x,t)dx + \psi'(t)f(\psi(t), t) - \phi'(t)f(\phi(t),t)
+    \]
+    dla $t \in [c,d]$.
+}
+\end{theorem}
+
+Dowody tych twierdzeń można znaleźć w książce [6], cz. 2, s. 243-245.
+
+\subsection{Całki niewłaściwe zależne od parametru}
+
+\begin{defn}
+    Niech $f(x,t)$ będzie funkcją o wartościach rzeczywistych, określoną dla każdego $x \in [a,b)$ i dla wszystkich wartości $t$ ze zbioru $t \subset \mathbb{R}$.
+    Załóżmy, że dla każdego $t \in T$ istnieje całka niewłaściwa z funkcji $f(x,t)$ w przedziale $[a,b)$ (zob. Definicja \ref{def:84}) (o punkcie $b$ zakładamy, że jest
+    jedynym punktem osobliwym). Przyporządkowując każdemu $t \in T$ liczbę 
+    \[
+        I(t) = \int_{a}^{b}f(x,t)dx
+    \]
+    otrzymujemy funkcję określoną na $T$, którą nazywamy całką niewłaściwą zależną od parametru.
+\end{defn}
+
+Wprowadzimy teraz pojęcie jednostajnej zbieżności całki niewłaściwej, zależnej od parametru.
+
+\begin{defn}
+    \begin{itemize}
+        \item [(a)]
+            Załóżmy, że funkcja $f(x,t)$ jest określona dla wszystkich wartości $x \geqslant a$ i wszystkioch wartości $t$ z pewnego zbioru $T$.
+            Mówimy, że całka $\int_{a}^{\infty}f(x,t)dx$ jest jednostajnie zbieżna w zbiorze $T$ do funkcji $I$, jeżeli 
+            dla każdego $\varepsilon > 0$ istnieje taka liczba $A_0 \geqslant a$ (niezależna od $t$), że dla każdego $A > A_0$ i każdego $t \in T$ zachodzi nierówność 
+            \[
+                \left| \int_{a}^{A}f(x,t)dx - I(t) \right| < \varepsilon
+            \]
+        \item [(b)]
+            Niech teraz $f(x,t)$ będzie funkcją określoną dla każdego $x \in [a,b)$, $b < +\infty$ i wszystkich wartości $t$ z pewnego zbioru $T$.
+            Załóżmy, że dla każdego $t \in T$ istnieje całka niewłaściwa z funkcji $f(x,t)$ w przedziale $[a,b)$.
+            Całkę $\int_{a}^{b}f(x,t)dx$ nazywamy jednostajnie zbieżną w zbiorze $T$ do funkcji $I$, jeżeli dla każdego $\varepsilon > 0$ istnieje taka liczba $\delta > 0$
+            (niezależna od $t$), że dla każego $\eta \in (0, \delta)$ i każdego $t \in T$ jest spełniona nierówność 
+            \[
+                \left| \int_{a}^{b-\eta}f(x,t)dx - I(t) \right| < \varepsilon
+            \]
+    \end{itemize}
+\end{defn}
+
+Sformułujemy teraz dwa twierdzenia o jednostajnej zbieżności całek niewłaściwych zależnych od parametru (ograniczymi się tylko do przypadku całek postaci 
+$\int_{a}^{\infty}f(x,t)dx$, dla całek określonych w Definicji \ref{def:168} (b) sytuacja jest analogiczna).
+
+\begin{theorem}
+{
+    (Cauchy'ego o całkach niewłaściwych jednostajnie zbieżnych) 
+    Na to by całka niewłaściwa $\int_{a}^{\infty}f(x,t)dx$ była jednostajnie zbieżna w $T$, potrzeba i wystarcza, aby dla dowolnej liczby $\varepsilon > 0$
+    można było znaleźć taką liczbę $A_0$ niezależną od $t$, żeby dla $A' > A > A_0$ nierówność 
+    \[
+        \left| \int_{A}^{A'}f(x,t)dx \right | < \varepsilon
+    \]
+    była spełniona dla wszystkich $t$ ze zbioru $T$.
+}
+\end{theorem}
+
+\begin{theorem}
+{
+    (Kryterium Weierstrassa jednostajnej zbieżności całek niewłaściwych)
+    Załóżmy, że funkcja $f(x,t)$ jest $R$-całkowalna w każdym skończonym przedziale $[a,A]$, $A \geqslant a$, względem $x$.
+    Jeżeli istnieje, zależna tylko od $x$, taka funkcja $\varphi(x)$ całkowalna w sensie niewłaściwym na przedziale $[a,+\infty)$,
+    że dla wszystkich $t$ ze zbioru $T$
+    \[
+        f(x,t) \leqslant \varphi(x) \quad (\text{dla} \, x \geqslant a)
+    \]
+    to całka $\int_{a}^{\infty}f(x,t)dx$ jest jednostajnie i bewzględnie zbieżna (to znaczy zbieżna jest całka $\int_{a}^{\infty}|f(x,t)|dx$) dla $t \in T$.
+}
+\end{theorem}
+
+Dowody Twierdzeń \ref{theorem:235} i \ref{theorem:236} są analogicznie do dowodów Twierdzeń \ref{theorem:101} i \ref{theorem:102}.
+(zob. również [6], s. 248-250).
+
+\begin{theorem}
+{
+    Niech funkcja $f(x,t)$ będzie określona w zbiorze $X \times T \subset \mathbb{R}^2$, gdzie $X$ i $T$ są zbiorami wartości 
+    odpowiednio zmiennych $x$ i $t$. Niech przy tym $t_0$ będzie punktem skupienia zbioru $T$ (dopuszczamy $+\infty$ i $-\infty$).
+    Na to, aby funkcja $f(x,t)$ dla wszystkich $t \to t_0$ dążyła jednostajnie do funkcji $\varphi(x) = \lim_{t \to t_0}f(x,t)$, $x \in X$,
+    potrzeba i wystarcza, aby dla każdego ciągu $(t_n)$ o wyrazach należących do $T$, ciąg $(f(x, t_n))$ dążył jednostajnie do $\varphi(x)$. 
+}
+\end{theorem}
+
+Laty dowód powyższego twierdzenia można znaleźc w książce [2], t. II, PWN, Warszawa, 1980, s. 563-564.
+
+\begin{wniosek}
+    Zbieżnośc jednostajna całki $\int_{a}^{\infty}f(x,t)dx$ względem $t$ jest równoważna ze zbieżnościa jednostajna wszystkich szeregów w postaci
+    \[
+        \sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}f(x,t)dx \quad (A_0 = a, A_n \geqslant a),
+    \]
+    gdzie $(A_n)$ jest dowolnym ciągiem dążacym do $+\infty$.
+\end{wniosek}
+
+\begin{proof}
+    Funkcja $F(A,t) = \int_{a}^{A}f(x,t)dx$ dla $A \to +\infty$ dąży jednostajnie wzlędem $t$ do całki $\int_{a}^{\infty}f(x,t)dx$ wtedy i tylko
+    wtedy, gdy do tej całki dązy jednostajnie każdy ciąg funkcji $(F(A_n),t)$ dla dowolnego ciągu $(A_n)$ takiego, że $\lim_{n \to \infty}A_n = +\infty$.
+    Wynika to z Twierdzenia \ref{theorem:237}. Przechodząc teraz od ,,języka ciągów'' do ,,języka szeregów nieskończonych'' otrzymujemy tezę wniosku.
+\end{proof}
+
+Dokładnie tak samo jak w powyższym wniosku można sprowadzić badanie zbieżności jednostajnej całki określonej w Definicji \ref{def:168} (b)
+do badania zbieżności szeregu nieskończonego 
+\[
+    \sum_{n=0}^{\infty}\int_{a_n}^{a_{n+1}}f(x,t)dx \quad (a_0 = a, a \leqslant a_n \leqslant b),
+\]
+utworzonego dla dowolnego ciągu $(a_n)$ zbieżnego do $b$.
+
+\begin{theorem}
+{
+    (O ciągłości całki niewłaściwej zależnej od parametru)
+    Niech funkcja $f$ będzie ciągła w prostokącie nieograniczonym $P = [a, +\infty) \times [c,d]$ i niech 
+    całka niewłaściwa będzie jednostajnie zbieżna w przedziale $[c,d]$. Wtedy funkcja $I$ jest ciągła w przedziale $[c,d]$.
+}
+\end{theorem}
+
+\begin{proof}
+    Niech $\varepsilon > 0$ będzie dowolnie obrane. Na mocy jednostajnej zbieżności całki $I(t)$ istnieje taka liczba $A_0 
+    \geqslant a$, że dla kązdego $A_0 < A$ oraz dla każdego $t \in [c,d]$ zachodzi nierówność 
+    \[
+        \left| \int_{A}^{\infty}f(x,t)dx \right| < \frac{\varepsilon}{4}
+    \]
+    Jeśli ustalimy liczbę $A$, to $\int_{a}^{A}f(x,t)dx$ jest całką niewłaściwą zależna od paramertu, a więc 
+    na mocy Twierdzenia \ref{theorem:230} jest funkcją ciągłą na $[c,d]$, czyli jednostajnie ciągłą na tym przedziale.
+    Istnieje więc taka liczba $\delta > 0$, że jeżeli $t_1,t_2 \in [c,d]$ i $|t_1 - t_2| < \delta$, to
+    \[
+        \left| \int_{a}^{A}f(x, t_1) - \int_{a}^{A}f(x,t_2)dx \right| < \frac{\varepsilon}{2}
+    \]
+    Wobec tego dla $t_1,t_2 \in [c,d]$ i $|t_1 - t_2| < \delta$ mamy 
+    \[
+        \begin{aligned}
+            |I(t_1) - I(t_2)| &\leqslant \left| \int_{a}^{A}f(x,t_1)dx - \int_{a}^{A}f(x,t_2)dx \right| + \left| \int_{A}^{\infty} f(x,t_1)dx \right| + \left| \int_{A}^{\infty} f(x,t_2)dx \right| \\
+            &< \frac{\varepsilon}{2} + \frac{\varepsilon}{4} + \frac{\varepsilon}{4} = \varepsilon.
+        \end{aligned}
+    \]
+    Funkcja $I$ jest więc jednostajnie ciągła w $[c,d]$.
+\end{proof}
+
+\begin{theorem}
+{
+    (O pochodnej całki niewłaściwej zależnej od parametru)
+    Niech funkcja $f$ będzie ciągław prostokącie nieograniczonym $P = [a, +\infty) \times [c,d]$ i niech ma w $P$
+    ciągłą pochodną cząstkową $\frac{\partial f}{\partial t}$. Jeżeli całka $I(t) = \int_{a}^{\infty}f(x,t)dx$ jest zbieżna w $[c,d]$
+    i całka $\int_{a}^{\infty}\frac{\partial f}{\partial t}(x,t)dx$ jest jednostajnie zbieżna w $[c,d]$, to funkcja $I$ ma pochodną w $[c,d]$ oraz 
+    \[
+        I'(t) = \int_{a}^{\infty}\frac{\partial f}{\partial t}(x,t)dx
+    \]
+}
+\end{theorem}
+
+\begin{proof}
+    Niech $(A_n$ będzie dowolnym ciągiem takim, że $A_0 = A$, $A_n \geqslant a$ oraz $A_n \to +\infty$.
+    Na mocy założenia szereg 
+    \[
+        \sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}f(x,t)dx
+    \]
+    jest zbieżny, a szereg 
+    \[
+        \sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}\frac{\partial f}{\partial t}(x,t)dx
+    \]
+    jest jednostajnie zbieżny w $[c,d]$, co wynika z Wniosku \ref{wniosek:51}. Na mocy twierdzenia o różniczkowaniu szeregów funkcyjnych
+    (zob. Wniosek \ref{wniosek:32}), suma pierwszego szeregu jest funkcją różniczkowalną w $[c,d]$, oraz 
+    \[
+        \frac{d}{dt}\sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}f(x,t)dx = \sum_{n=0}^{\infty}\frac{d}{dt}\int_{A_n}^{A_{n+1}}f(x,t)dx
+    \]
+    przy czym na podstawie Twierdzenia \ref{theorem:231} mamy 
+    \[
+        \frac{d}{dt}\int_{A_n}^{A_{n+1}}f(x,t)dx = \int_{A_n}^{A_{n+1}}\frac{\partial f}{\partial t}(x,t)dx
+    \]
+    Ponieważ 
+    \[
+        \int_{a}^{\infty}f(x,t)dx = \sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}f(x,t)dx 
+    \]
+    oraz 
+    \[
+        \int_{a}^{\infty}\frac{\partial f}{\partial t}(x,t)dx = \sum_{n=0}^{\infty}\int_{A_n}^{A_{n+1}}\frac{\partial f}{\partial t}(x,t)dx,
+    \]
+    więc 
+    \[
+        I'(t) = \int_{a}^{\infty}\frac{\partial f}{\partial t}(x,t)dx
+    \]
+\end{proof}
+
+\begin{theorem}
+{
+    Przy założeniach Twierdzenia \ref{theorem:238} pradziwy jest wzór 
+    \begin{equation}\label{eq:182}
+        \int_{c}^{d}\Big( \int_{a}^{\infty}f(x,t)dx \Big)dt = \int_{a}^{\infty}\Big( \int_{c}^{d}f(x,t)dt\Big)dx
+    \end{equation}
+}
+\end{theorem}
+
+Jeżeli założymy, że funkcja $f(x,t)$ jest nieujemna dla $(x,t) \in [a,+\infty) \times [c,d]$, to sama ciągłość całki $I(t) = \int_{a}^{\infty}f(x,t)dx$ pociąga za sobą równość (\ref{eq:182}).
+
+Następujące twierdzenia dotyczą zamiany kolejności całkowania w przypadku, gdy obydwa przedziały są nieograniczone.
+
+\begin{theorem}
+{
+    \begin{itemize}
+        \item [(a)]
+            Załóżmy, że funkcja $f(x,t)$ jest określona i ciągła dla $x \geqslant a$ i $t \geqslant c$ i że obie całki 
+            \begin{equation}\label{eq:183}
+                \int_{a}^{\infty}f(x,t)dx, \quad \int_{c}^{\infty}f(x,t)dt
+            \end{equation}
+            są zbieżne jednostajnie - pierwsza względem $t$, druga względem $x$ - w dowolnym przedziale skończonym. Wówczas jeśli istnieje co najmniej jedna z dwóch całek 
+            \[
+                \int_{c}^{\infty}\Big( \int_{a}^{\infty}|f(x,t)|dx\Big)dt, \quad \int_{a}^{\infty}\Big( \int_{c}^{\infty}|f(x,t)|dt\Big)dx,
+            \]
+            to następujące całki istnieją i są sobie równe
+            \[
+                \int_{c}^{\infty}\Big( \int_{a}^{\infty}f(x,t)dx\Big)dt, \quad \int_{a}^{\infty}\Big( \int_{c}^{\infty}f(x,t)dt\Big)dx,
+            \]
+        \item [(b)] 
+            Jeżeli dla nieujemnej i ciągłej funkcji $f(x,t)$ ($x \geqslant a, t \geqslant c$) obie całki (\ref{eq:183}) są także funkcjami ciągłymi 
+            - pierwsza zmiennej $t$, druga zmiennej $x$ - to istnienie jednej z całek z tezy punktu (a) pociąga za sobą istnienie drugiej, która musi być równa pierwszej.
+    \end{itemize}
+}
+\end{theorem}
+
+\begin{uwaga}
+    \begin{itemize}
+        \item [(a)] Twierdzenia 238 - 241 mogą być przeniesione na przypadek, gdy $b$ jest punktem osobliwym oraz $b \in \mathbb{R}$, $b < +\infty$.
+            (Twierdzenie 241 rownież dla przypadku, gdy $d$ jest punktem osobliwym oraz $d \in \mathbb{R}$, $d < +\infty$).
+        \item [(b)] Dowody Twierdzeń 240 i 241 itd. można znaleźc w ksiązce [2], t. II, s. 610-614.
+    \end{itemize}
+\end{uwaga}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)] Rozpatrzmy funkcję $f(x,t) = -t^x\ln t$ dla $0 < t < 1$, $f(x, 0) = f(x,1) = 0$,
+            gdzie $1 \leqslant x < +\infty$. Można pokazać, że całka 
+            \[
+                I(t) = \int_{1}^{\infty}f(x,t)dx
+            \]
+            nie jest zbieżna jednostajnie oraz funkcja $I(t)$ nie jest ciągła w punkcie $t = 1$ (zob. ćw.)
+            mimo, że funkcja $f$ jest ciągła w prostokącie $P = [1, +\infty) \times (0, 1]$.
+        \item [(b)]
+            Całka $\int_{1}^{\infty}e^{-tx}dx$ jest jednostajnie zbieżna w przedziale $[a,+\infty)$ przy każdym $a > 0$.
+            Nie jest ona jednak jednostajnie zbiezna w przedziale $(0, +\infty)$ (zob. ćw.).
+        \item [(c)]
+            W przykładzie \ref{ex:32} (b) pokazaliśmy, że całka niewłaściwa $\int_{0}^{\infty}\frac{\sin x}{x}dx$ jest zbieżna warunkowo.
+            (całkę te nazywamy całką Dirichleta). W oparciu o teorię całki niewłaściwej zależnej od parametru można wykazać, że 
+            \[
+                \int_{0}^{\infty}\frac{\sin tx}{x}dx = \frac{\pi}{2} \quad \text{dla każdego \, t > 0},
+            \]
+            (zob. [6], s. 252-255).
+    \end{itemize}
+\end{ex}
+
+\newpage
+
+\subsection{Funkcja Beta i Gamma Eulera}
+
+\begin{defn}
+    \begin{itemize}
+        \item [(a)]
+            Dla każdego $x > 0$ określamy 
+            \[
+                \Gamma(x) = \int_{0}^{\infty}t^{x-1}e^{-t}dt
+            \]
+            Całka ta jest zbieżna dla wymienionych wartości $x$ (zob. [2], t. II, s. 509). Nazywamy ją funkcją Eulera drugiego rodzaju
+            lub funkcją Gamma Eulera.
+        \item [(b)]
+            Dla $x > 0$ i $y > 0$ określamy 
+            \[
+                B(x,y) = \int_{0}^{1}t^{x-1}{(1-t)}^{y-1}dt.
+            \]
+            Całka ta jest zbieżna dla wymienionych wartości $x$ i $y$ (zob. [2], t. II, s. 508)
+            Nazywamy ją funkcją Eulera pierwszego rodzaju lub funkcją Beta Eulera.
+    \end{itemize}
+\end{defn}
+
+\begin{theorem}
+{
+    (o funkcji Gamma)
+    \begin{itemize}
+        \item [(a)]
+            Całka $\int_{0}^{\infty}t^{x-1}e^{-t}dt$ jest jednostajnie zbieżna w przedziale $[a,b]$, gdzie $b > a > 0$.
+        \item [(b)]
+            Funkcja $\Gamma(x)$ jest ciągła dla $x > 0$.
+        \item [(c)]
+            $\Gamma(x + 1) = x\Gamma(x)$ dla każdego $x > 0$.
+        \item [(d)]
+            $\Gamma(n+1) = n!$ dla $n = 0,1,\ldots$.
+        \item [(c)]
+            $\log \Gamma$ jest funkcją wypukłą na przedziale $(0, +\infty)$ (zob. Definicja \ref{def:63}).
+    \end{itemize}
+}
+\end{theorem}
+
+\begin{proof}
+    \item [(a)]
+        Zob. [6], t. II, cz. II, s. 256-257.
+    \item [(b)]
+        Ciagłośc funkcji $\Gamma$ dla $x > 0$ wynika z jednostajnej zbieżności w dowolnym przedziale $[a,b]$ całek $\int_{1}^{\infty}t^{x-1}e^{-t}dt$ i $\int_{0}^{1}t^{x-1}e^{-t}dt$,
+        na podstawie Twierdzenia \ref{theorem:238} i Uwagi \ref{uwaga:94} (a).
+    \item [(c)]
+        Niech $x > 0$. Całkując przez części otrzymamy dla $b > a > 0$ równość 
+        \[
+            \int_{a}^{b}t^x e^{-t}dt = \frac{a^x}{e^a} - \frac{b^x}{e^b} + x\int_{a}^{b}t^{x-1}e^{-t}dt.
+        \]
+        W szczególności 
+        \[
+            \int_{a}^{1}t^x e^{-t}dt = \frac{a^x}{e^a} - \frac{1}{e} + x\int_{a}^{1}t^{x-1}e^{-t}dt \to \frac{-1}{e} + x\int_{0}^{1}t^{x-1}e^{-t}dt
+        \]
+        przy $a \to 0^+$. Więc 
+        \[
+            \int_{0}^{1}t^x e^{-t}dt = \frac{-1}{e} + x \int_{0}^{1}t^{x} e^{-t}dt.
+        \] 
+        Ponadto 
+        \[
+            \int_{1}^{b}t^x e^{-t}dt = \frac{1}{e} - \frac{b^x}{e^b} + x \int_{1}^{b}t^{x-1} e^{-t}dt \to x \int_{1}^{\infty}t^{x-1}e^{-t}dt 
+        \]
+        przy $b \to +\infty$. Więc 
+        \[
+            \int_{1}^{\infty}t^x e^{-t}dt = \frac{1}{e} + x \int_{1}^{\infty}t^{x-1}e^{-t}dt.
+        \]
+        Stąd 
+        \[
+            \Gamma(x + 1) = \int_{0}^{\infty}t^x e^{-t}dt = \int_{0}^{1}t^x e^{-t}dt + \int_{1}^{\infty}t^x e^{-t}dt = x \int_{0}^{\infty}t^{x-1} e^{-t}dt = x\Gamma(x).
+        \]
+    \item [(d)]
+        Mamy $\Gamma(1) = \int_{0}^{\infty}e^{-t}dt = 1 = 0!$. Przypuśmy, że równość (d) zachodzi dla pewnego $n \geqslant 0$. Wtedy na podstawie (c),
+        $\Gamma(n+2) = (n+1) \cdot n!$. Na mocy zasady indukcji zupełnej (d) zachozi dla dowolnego $n = 0, 1, 2, \ldots$. 
+    \item [(e)]
+        Dowód tego punktu można znaleźc w książce [6], s. 164 lub [2], t. II, s. 653-654.
+    Własności (c)-(e) całkowicie charakteryzują funkcje $\Gamma$. Dokładniej prawdziwe Następujące
+\end{proof}
+
+\begin{theorem}
+{
+    Jeżeli $f$ jest funkcją określoną na przedziale $(0, +\infty)$, przyjmującą wartości dodatnie oraz spełniającą warunki
+    \begin{itemize}
+        \item [(a)] $f(x+1) = xf(x)$,
+        \item [(b)] $f(1) = 1$,
+        \item [(c)] $\log f$ jest funkcją wypukłą
+    \end{itemize}
+    to $f(x) = \Gamma(x)$.
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźć w [6], s.164-165 lub [2], t. II, s. 654-655.
+
+\begin{theorem}
+{
+    Niech $\varphi(x)$, $x > 0$ będzie funkcją klasy $C^1$, przymującą wartości różne od zera oraz spełniającą warunki 
+    \begin{itemize}
+        \item [(a)] $\varphi(x + 1) = x\varphi(x)$,
+        \item [(b)] $\varphi(x)\varphi(x + \frac{1}{2}) = \frac{\sqrt \pi}{2^{2x-1}}\varphi(2x)$.
+    \end{itemize}
+    Wówczas $\varphi(x) = \Gamma(x)$.
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźć [2], t. II, s. 652-653.
+
+\begin{theorem}
+{
+    (o funkcji Beta)
+    \begin{itemize}
+        \item [(a)]
+            Całka $\int_{0}^{1}t^{x-1}{(1-t)}^{y-1}dt$ jest jednostajnie zbieżna w każdym kwadracie $[a,b] \times [a,b]$, gdzie $0 < a < b < +\infty$.
+        \item [(b)]
+            Funkcja $B(x,y) = \int_{0}^{1}t^{x-1}{(1-t)}^{y-1}dt$ jest ciągła względem $(x,y)$ w zbiorze $(0, +\infty) \times (0, +\infty)$.
+        \item [(c)]
+            $B(m,n) = \frac{(n-1)!(m-1)!}{(m+n-1)!}$, gdzie $m,n \in \mathbb{N} \cup \{0\}$.
+    \end{itemize}
+}
+\end{theorem}
+
+Nastepujące twierdzenie ustala związek między funkcjami $\Gamma$ i $B$. 
+
+\begin{theorem}
+{
+    Jeśli $x > 0$ oraz $y > 0$, to
+    \[
+        B(x,y) = \frac{\Gamma(x) \Gamma(y)}{\Gamma(x + y)}.
+    \]
+}
+\end{theorem}
+
+Dowód Twierdzenia \ref{theorem:245} (a) i (b) można znaleźc w książce [6], t. I, cz. II, s.258-259. Punkt (c) tego twierdzenia jest
+bezpośrednim wnioskiem z Twierdzenia \ref{theorem:246} oraz Twierdzenia \ref{theorem:242} (d). Bezpośredni dowód tego punktu można znaleźc w [2], t. II, s. 643-644.
+Z kolei dowód Twierdzenia \ref{theorem:245} można znaleźc w [6], s. 165 lub w [2], t. II, s. 647-649.
+
+\newpage
+
+\section{Wielokrotna całka Riemanna}
+
+\begin{defn}
+    Kostce $n$-wymiarowej $I = I_{a,b} = \{x \in \mathbb{R}^n : a_i \leqslant x \leqslant b_i, i = 1, \ldots, n\}$
+    przyporządkowujemy liczbe $I = \prod_{i=1}^{n}(b_i - a_i)$. Liczbę tę nazywamy objętościa lub miarą kostki. Często stosujemy oznaczenie 
+    $\mu(I) = |I|$.
+\end{defn}
+
+\begin{lemat}
+{
+    Miara przedziału (kostki) w $\mathbb{R}^n$ jest 
+    \begin{itemize}
+        \item [(a)] jednorodna, to znaczy, jeśli $\lambda I_{a,b} := I_{\lambda a, \lambda b}$, gdzie $\lambda \geqslant 0$, to $|\lambda I_{a,b}| = \lambda^{n} |I_{a,b}|$,
+        \item [(b)] addytywna to znaczy, jeśli przedziały $I_1, I_2, \ldots, I_k$ są takie, że $I = \bigcup_{i=1}^{k}I_i$ oraz przedziały $I_1, I_2, \ldots, I_k$ parami nie
+            posiadają punktów wewnętrznych wspólnych to 
+            \[
+                |I| = \sum_{i=1}^{k}|I_i|,
+            \]
+        \item [(c)]
+            Jeśli przedział $I$ pokryjemy skończoną liczbą przedziałów $I_1, I_2, \ldots, I_k$, to znaczy $I \subset \bigcup_{i=1}^{k}I_i$, to $|I| \leqslant \sum_{i=1}^{k}|I_i|$.
+    \end{itemize}
+}
+\end{lemat}
+
+Powyższy lemat łatwo wynika z Definicji \ref{def:170}.
+
+\begin{defn}
+    Niech $I = \{x \in \mathbb{R}^n : a_i \leqslant x_i \leqslant b_i, i = 1, \ldots, n\}$ będzie danym przedziałem $n$-wymiarowym.
+    Podział odcinków $[a_i, b_i]$ $i = 1 \ldots, n$ indukuje podział przedziału $I$ na mniejsze przedziały oraz 
+    $I = \bigcup_{j=1}^{k}I_j$, gdzie $I_j$, $j=1, \ldots, k$, są przedziałami wyznaczonymi przez podziały przedziałów $[a_i, b_i]$, $i = 1, \ldots, n$. Oznaczamy go
+    symbolem $P$.
+
+    Wielkośc $\delta(P) = \max_{i \leqslant j \leqslant k}d(I_j)$ (największa ze średnic przedziałów podziału $P$) nazywamy średnicą podziału $P$.
+\end{defn}
+
+Niech $f$ będzie ograniczoną funkcją rzeczywistą, określoną na przedziale $I$. W każdym z przedziałów $I_j$ podziału $P$ wybierzmy pewien
+punkt $x_j$ ($1 \leqslant j \leqslant k$) i utwórzmy sumę $R(f, P) = R = \sum_{j=1}^{k}f(\xi_j)|I_j|$. Sumę te nazywamy sumą Riemanna odpowiadającą podziałowi $P$,
+przy ustalonym wyborze punktów $x_j$. Przez $\mathfrak{R}(f, P)$ oznaczać będziemy zbiór wszystkich możliwych sum Riemanna odpowiadających podziałowi $P$.
+
+\begin{defn}
+    Mówimy, że funkcja $f$ jest całkowalna w sensie Riemanna na przedziale $I$, jeśli istnieje taka liczba rzeczywista, którą oznaczamy symbolem 
+    $\int_{I} f(x)dx$, że 
+    \[
+        \forall_{\varepsilon > 0}\exists_{\delta > 0}\forall_{P}\forall_{R \in \mathfrak{R}(f,P)} \delta(P) < \delta \implies |R - \int_{I}f(x)dx| < \varepsilon.
+    \]
+    Piszemy wówczas $\int_{I}f(x)dx = \lim_{\delta(P) \to 0}R$ i liczbę te nazywamy $n$-krotną całką Riemanna funkcji $f$ na przedziale $I$.
+    Czesto stosujemy również następujące oznaczenia całki $n$-krotnej:
+    \[
+        \int_{I}f(x_1, \ldots, x_n)dx_1, \ldots, dx_n \quad \text{lub} \quad \int_{a_n}^{b_n}\ldots \int_{a_1}^{b_1}f(x_1, \ldots, x_n)dx_1, \ldots, dx_n.
+    \]
+\end{defn}
+
+Powyższa definicja jest oczywiście rozszerzeniem Definicji \ref{def:70}. Można również podać jej równoważny odpowiednik, analogiczny do Definicji \ref{def:69}.
+Jest również jasne, że w Definicjach \ref{def:171} oraz \ref{def:172} można zakładać, że $f$ jest ograniczonym odwzorowaniem, o wartościach w dowolnej 
+przestrzeni unormowanej.
+
+\begin{defn}
+    Mówimy, że zbiór $E \subset \mathbb{R}^n$ posiada ($n$-wymiarową) miarę zero lub jest zbiorem miary zero w sensie Lebesgue'a, jeśli
+    dla dowolnego $\varepsilon > 0$ istnieje pokrycie zbioru $E$ co najwyżej przeliczalnym układem $\{I_i\}$ $n$-wymiarowych przedziałów takim, że 
+    $\sum_{i}|I_i| < \varepsilon$.
+\end{defn}
+
+\begin{lemat}
+{
+    \begin{itemize}
+        \item [(a)] Punkt oraz skończona liczbą punktów są zbiorami miary zero.
+        \item [(b)] Suma skończonej, a nawet przeliczalnej liczby zbiorów miary zero jest zbiorem miary zero.
+        \item [(c)] Podzbiór zbioru miary zero jest zbiorem miary zero.
+        \item [(d)] Przedział zdegenerowany $I_{a,b} \subset \mathbb{R}^n$ (to znaczy $a_i < b_i$ dla $i = 1, \ldots, n$) nie jest zbiorem miary zero.
+    \end{itemize}
+}
+\end{lemat}
+
+Punkty (a)-(c) powyższego lematu wynikają bezpośrednio z Definicji 173. Dowód punktu (d) można znaleźc w książce [10].
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Zbiór punktów wymiernch w $\mathbb{R}^n$ (czyli punktów, których wszystkie współrzędne są liczbami wymiernymi) jest przeliczalny i dlatego jest zbiorem miary zero.
+        \item [(b)]
+            Niech $f : I \to \mathbb{R}$, gdzie $I$ jest $(n-1)$-wymiarowym przedziałem zawartym w $\mathbb{R}^{n-1}$, będzie funkcją ciągłą. Można pokzać, 
+            że jej wykres zawarty $\mathbb{R}^n$ jest zbiorem $n$-wymiarowej miary zero. (zob. ćw.)
+        \item [(c)]
+            Wobec punktu (b) Lematu \ref{lemat:9} (a) jest jasne, że wykres funkcji ciągłej $f : \mathbb{R}^{n-1} \to \mathbb{R}$ jest zbiorem $n$-wymiarowej miary zero.
+    \end{itemize}
+\end{ex}
+
+\begin{lemat}
+{
+    \begin{itemize}
+        \item [(a)]
+            Klasa zbiorów miary zero nie zmieni się w zależności od tego, czy w Definicji \ref{def:173} będziemy rozważali przedziały otwarte czy domknięte.
+        \item [(b)]
+            Zbiór otwarty $K \subset \mathbb{R}^n$ jest zbiorem miary zero wtedy i tylko wtedy, gdy dla każdego $\varepsilon > 0$ istnieje skończone pokrycie 
+            zbioru $K$ przedziałami, których suma objętości jest mniejsza niż $\varepsilon$.
+    \end{itemize}
+}
+\end{lemat}
+
+W dowodzie Kryterium Lebesgue'a wykorzystamy jeszcze pojęcie oscylacji funkcji oraz pewne uogólnienie Twierdzenia Cantora.
+
+\begin{defn}
+    Oscylacją funkcji $f : E \to \mathbb{R}$ na zbiorze $E$ nazywamy wielkość 
+    \[
+        \omega(f, E) = \sup_{x_1, x_2 \in E}|f(x_1) - f(x_2)|,
+    \]
+    a oscylacją w punkcie $x \in E$ nazywamy wielkośc 
+    \[
+        \omega(f, x) = \lim_{\delta \to 0}\omega(f, U_E^\delta(x)),
+    \]
+    gdzie $ U_E^\delta(x)$ jest $delta$-otoczeniem punktu $x$ w zbiorze $E$ (czyli $U_E^\delta(x) = E \cap B(x, \delta)$).
+\end{defn}
+
+\begin{lemat}
+{
+    Jesli dla każdego punktu $x$ należącego do zbioru zwartego $K$ zachodzi $\omega(f,x) \leqslant \omega_0$, gdzie $f : K \to \mathbb{R}$, to dla 
+    dowolnego $\varepsilon > 0$ istnieje takie $\delta > 0$, że dla każdego punktu $x \in K$ spełniona jest nierówność $\omega(f,  U_E^\delta(x)) < \omega_0 + \varepsilon$.
+}
+\end{lemat}
+
+\begin{uwaga}
+    Zauważmy, że funkcja $f$ jest ciągła w punkcie $x_0$ wtedy i tylko wtedy, gdy $\omega(f, x_0) = 0$. (zob. ćw.)
+\end{uwaga}
+
+Dla $\omega_0 = 0$ Lemat \ref{lemat:11} jest znanym Twierdzeniem Cantora o jednostajnej ciągłości funkcji ciągłej na zbiorze zwartym (zob. Tw. 51). Dowód
+powyższego lematu jest analogiczny do dowodu Twierdzenia Cantora.
+
+% str 285
+
+\begin{defn}
+    Mówimy, że własność zachodzi dla prawie wszystkich punktów zbioru $M$ lub, że jest spełniona prawie wszędzie na $M$, jeśli podzbiór zbioru $M$, gdzie dana własność nie 
+    zachodzi posiada miarę zero.
+\end{defn}
+
+\begin{theorem}
+{
+    (Kryterium Lebesgue'a) Funkcja $f : I \to \mathbb{R}$ jest całkowalna w sensie Riemanna wtedy i tylko wtedy, gdy jest ona ciągła prawie wszędzie.
+}
+\end{theorem}
+
+\begin{proof}
+    Tego nie będzie.
+\end{proof}
+
+\begin{uwaga}
+    Ponieważ kryterium Lebesgue'a istnienia granicy funkcji w punkcie jest prawdziwe dla dowolnej przestrzeni metrycznej zupełnej (zob. Tw. \ref{theorem:196}),
+    zatem jak wynika z dowodu Twierdzenia \ref{theorem:247}, kryterium Lebesgue'a jest prawdziwe dla funkcji o wartościach w przestrzeni Banacha.
+\end{uwaga}
+
+Zajmiemy się teraz jeszcze jednym kryterium całkowalności w sensie Riemanna funkcji o wartościach rzeczywistych.
+
+\begin{defn}
+    Niech $f : I \to \mathbb{R}$ będzie funkcją ograniczoną i niech $P = \{I_i\}$ będzie podziałem przedziału $I$. Połóżmy
+    \[
+        m_i = \inf_{x \in I_i}f(x), \quad M_i = \sup_{x \in I_i}f(x)
+    \]
+    Liczby
+    \[
+        U(f, P) = \sum_{i}M_i |I_i|, \quad L(f, P) = \sum_{i}m_i |I_i|
+    \]
+    nazywamy odpowiednio sumą górną i sumą dolną lub sumami Darboux funkcji $f$ odpowiadającymi podziałowi $P$ przedziału $I$. Dalej wielkości
+    \[
+        \underline{\int_{I}}f(x)dx = \sup_{P}L(f, P), \quad \overline{\int_{I}}f(x)dx = \inf_{P}U(f, P)
+    \]
+    gdzie kres górny i dolny są brane ze względu na wszystkie podziały $P$ przedziału $I$, nazywamy odpowiednio dolną i górną całką Darboux funkcji
+    $f$ na przedziale $I$. Całki te istnieją dla dowolnej funkcji ograniczonej $f : I \to \mathbb{R}$ (por. Definicja \ref{def:71}).
+\end{defn}
+
+\begin{lemat}
+{
+    Niech $f : I \to \mathbb{R}$ będzie funkcją ograniczoną. Wówczas zachodzą następujące związki:
+    \begin{itemize}
+        \item [(a)]
+            $L(f, P) = \inf R(f, P) \leqslant R(f, P) \leqslant \sup R(f, P) = U(f, P)$ (kresy brane są ze względu na wszystkie możliwe wyboru punktów $\xi$)
+        \item [(b)]
+            Jeśli podział $P^*$ przedziału $I$ jest otrzymany przez rozdrobnienie (por. Definicja \ref{def:72}) przedziałów podziału $P$, to
+            \[
+                L(f, P) \leqslant L(f, P^*) \leqslant U(f, P^*) \leqslant U(f, P)
+            \]
+        \item [(c)]
+            Dla dowolnej pary $P1, P2$ podziałów przedziału $I$ spełniona jest nierówność 
+            \[
+                L(f, P_1) \leqslant U(f, P_2).
+            \]
+    \end{itemize}
+}
+\end{lemat}
+
+\begin{proof}
+    Związki (a) i (b) wynikają bezpośrednio z Definicji 171 i 176.
+    Dla dowodu związku (c) wystarczy rozważyć pomocniczy podział $P$, którego elementami są przekroje podziałów $P_1$ i $P_2$. Podział $P$ można
+    rozpatrywać jako rozdrobnienie każdego z podziałów $P_1, P_2$ i dlatego ze związków (b) otrzymujemy 
+    \[
+        L(f, P_1) \leqslant L(f, P) \leqslant U(f, P) \leqslant U(f, P_2).
+    \]
+\end{proof}
+
+\begin{wniosek}
+{
+    Z Definicji \ref{def:175} oraz z Lematu \ref{lemat:12} (c) otrzymujemy następujące nierówności 
+    \[
+        L(f, P) \leqslant \underline{\int_{I}}f(x)dx \leqslant \overline{\int_{I}}f(x)dx \leqslant U(f, P)
+    \]
+    (zob. Twierdzenie \ref{theorem:76})
+}
+\end{wniosek}
+
+\begin{theorem}
+{
+    (Darboux) Dla dowolnej funkcji ograniczonej $f : I \to \mathbb{R}$ granice $\lim_{\delta(P) \to 0}L(f, P)$ oraz 
+    $\lim_{\delta(P) \to 0}U(f, P)$ istnieją, oraz 
+    \[
+        \lim_{\delta(P) \to 0}L(f, P) = \underline{\int_{I}}f(x)dx, \quad \lim_{\delta(P) \to 0}U(f, P) = \overline{\int_{I}}f(x)dx.
+    \]
+}
+\end{theorem}
+
+Prosty dowód powyższego twierdzenia można znaleźć w książce [11], cz. II, s. 121.
+
+\begin{theorem}
+{
+    (Kryterium Darboux) Ograniczona funkcja $f : I \to \mathbb{R}$, gdzie $I$ jest przedziałem zawartym w $\mathbb{R}^n$, jest całkowalna w sensie Riemanna wtedy i tylko wtedy,
+    gdy 
+    \[
+        \underline{\int_{I}}f(x)dx = \overline{\int_{I}}f(x)dx
+    \]
+}
+\end{theorem}
+
+Twierdzenie \ref{theorem:77} jest oczywiście szczególnym przypadkiem powyższego kryterium.
+
+\begin{proof}
+    Jeśli funkcja $f$ jest całkowalna w sensie Riemanna na przedziale $I$, to z Definicji \ref{def:171} i \ref{def:176} i Lematu \ref{lemat:12} (a)
+    wynika, że wtedy $\$underline{\int_{I}}f(x)dx = \overline{\int_{I}}f(x)dx$ (ta wartość jest oczywiście równa całce Riemanna funkcji $f$ na przedziale $I$).
+    Dostateczność. Ponieważ $L(f, P) \leqslant R(f,P) \leqslant U(f, P)$, to w przypadku gdy $\underline{\int_{I}}f(x)dx = \overline{\int_{I}}f(x)dx$,
+    skrajne wyrazy powyższych nierówności dążą na mocy Twierdzenia \ref{theorem:248} do tej samej granicy, przy $\delta(P) \to 0$. To oznacza, że istnieje granica 
+    $\lim_{\delta(P)}R(f, P)$, a więc funkcja $f$ jest całkowalna w sensie Riemanna na przedziale $I$.
+\end{proof}
+
+\begin{uwaga}
+    Dla $n$-wymiarowej całki Riemanna prawdziwe jest również Kryterium analogiczne do Twierdzenia \ref{theorem:76} (zob. [10], Tw. 3.3, s. 58).
+\end{uwaga}
+
+\newpage
+
+\subsection{Całka po zbiorze mierzalnym w sensie Jordana}
+
+\begin{defn}
+    Zbiór $E \subset \mathbb{R}^n$ nazywamy dopuszczalnym, jeśli jest on ograniczony oraz jego brzeg $\partial E$ jest zbiorem miary zero w sensie Lebesgue'a. 
+    Brzeg zbioru $E \subset \mathbb{R}^n$ (oznaczamy $\partial E$) składa się z punktów, w otoczeniu których znajdują się zarówno punkty zbioru $E$ jak i dopełnienia tego zbioru.
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)] Przedział, kula otwarta w $\mathbb{R}^n$ są zbiorami dopuszczalnymi.
+        \item [(b)] Niech $I$ będzie przedziałem $(n-1)$-wymiarowym i niech $\varphi_1, \varphi_2 : I \to \mathbb{R}$ bedą 
+            funckjami ciągłymi takimi, że $\varphi_1(x) < \varphi_2(x)$ dla $x \in I$. Wobec Przykładu \ref{ex:63} (b) zbiór 
+            $\{(x_1, \ldots, x_{n-1}, x_n)\ : (x_1, \ldots, x_{n-1}) \in I, \varphi_1(x_1, \ldots, x_{n-1}) \leqslant x_n \leqslant \varphi_2(x_1, \ldots, x_{n-1})\}$
+            jest zbiorem dopuszczalnym w $\mathbb{R}^n$.
+    \end{itemize}
+\end{ex}
+
+\begin{lemat}
+{
+    Dla dowolnych zbiorów $E, E_1, E_2 \in \mathbb{R}^n$:
+    \begin{itemize}
+        \item [(a)] $\partial E$ jest zbiorem domkniętym w $\mathbb{R}^n$,
+        \item [(b)] $\partial (E_1 \cup E_2) \subset \partial E_1 \cup \partial E_2$,
+        \item [(c)] $\partial (E_1 \cap E_2) \subset \partial E_1 \cup \partial E_2$,
+        \item [(d)] $\partial (E_1 \setminus E_2) \subset \partial E_1 \cup \partial E_2$.
+    \end{itemize}
+    Powyższy lemat łatwo wynika z definicji brzegu zbioru.
+}
+\end{lemat}
+
+\begin{lemat}
+{
+    Suma oraz iloczyn skończonej liczby zbiorów dopuszczalnych jest zbiorem dopuszczalnym. Różnica zbiorów dopuszczalnych też jest zbiorem dopuszczalnym.
+}
+\end{lemat}
+
+\begin{uwaga}
+    Brzeg zbioru dopuszczalnego jest również zbiorem ograniczonym w $\mathbb{R}^n$, a zatem uwzględniając Lemat \ref{lemat:13} (a), jest on zbiorem zwartym.
+    Wobec Lematu 10 (b) można go pokryć skończoną liczbą przedziałów, których suma objętości jest dowolnie bliska zeru.
+\end{uwaga}
+
+\begin{defn}
+    Funkcje 
+    \[
+        \chi_E(x) = \begin{cases}
+            1, &\text{jeśli } x \in E, \\
+            0, &\text{jeśli } x \notin E,
+        \end{cases}
+    \]
+    gdzie $E$ jest dowolnym zbiorem, nazywamy funkcją charakterystyczną zbioru $E$.
+\end{defn}
+
+Jest jasne, że zbiór pinktów nieciągłości funkcji $\chi_E$ jest równy $\partial E$ (porównaj [10], dowód Tw. 3.9, s. 66).
+
+\begin{defn}
+    Całkę z funkcji ograniczonej $f$ po zbiorze $E \subset \mathbb{R}^n$ określamy równościa 
+    \[
+        \int_{E}f(x)dx = \int_{I \supset E}f\chi_E(x)dx.
+    \]
+    gdzie $I$ jest dowolnym przedziałem zawierającym zbiór $E$, o ile funkcja $f\chi_Ea$ jest całkowalna w sensie Riemanna na przedziale $I$.
+    Mówimy wówczas, że $f$ jest całkowalna w sensie Riemanna na zbiorze $E$. 
+\end{defn}
+
+Można udowodnić (zob. [11], cz. II, Lemat 3, s. 124-125), że powyższa definicja nie zależy od wyboru przedziału $I$.
+
+\begin{theorem}
+{
+    Funkcja ograniczona $f : E \to \mathbb{R}$, gdzie $E$ jest zbiorem dopuszczalnym, jest całkowalna w sensie Riemanna na zbiorze $E$, wtedy i tylko wtedy, gdy 
+    jest ona ciągła dla prawie wszystkich punktów zbioru $E$.
+}
+\end{theorem}
+
+\begin{proof}
+    Funkcja $f\chi_E$ w porównaniu do funkcji $f$ może mieć dodatkowe punkty nieciągłości tylko na brzegu $\partial E$ zbioru $E$, który na mocy założenia jest zbiorem miary zero.
+\end{proof}
+
+Miara Jordana została zdefiniowana w Definicji \ref{def:82}. Zajmiemy się teraz jej równoważnym określeniem.
+
+\begin{defn}
+    Miarą Jordana lub objętością ograniczonego zbioru $E \subset \mathbb{R}^n$ nazywamy wielkośc $\mu(E) = \int_{E}1dx$, jeśli 
+    całka Riemanna po prawej stronie równości istnieje.
+
+    Ponieważ 
+    \[
+        \int_{E}1dx = \int_{I \supset E}\chi_E(x)dx,
+    \]
+    zatem na mocy Kryterium Lebesgue'a i informacji po Definicji \ref{def:178} tak wprowadzona miara jest określona tylko dla zbiorów dopuszczalnych.
+\end{defn}
+
+\begin{uwaga}
+    Jeśli $E$ jest zbiorem dopuszczalnym, to 
+    \[
+        \mu(E) = \int_{I \supset E}\chi_E(x)dx = \underline{\int_{I \supset E}}\chi_E(x)dx = \overline{\int_{I \supset E}}\chi_E(x)dx.
+    \]
+\end{uwaga}
+
+Na mocy Twierdzenia Darboux (Twierdzenie \ref{theorem:248}) dwie ostatnie całki w powyższych równościach są granicami odpowiednio
+dolnych i górnych sum Darboux funkcji $\chi_E$, odpowiadających podziałowi $P$ przedziału $I$. Jednak na mocy definicji funkcji $\chi_E$, dolna suma Darboux 
+jest równa sumie objętości przedziałów podziału $P$, leżących w $E$,a górna suma Darbou jest równa sumie objętości tych przedziałów podziału $P$, które mają 
+punkty wspólne ze zbiorem $E$. Oznacza to, że $\mu(E)$ jest wspólną granicą przy $\delta(P) \to 0$ objetości wielokątów wpisanych w $E$ i opisanych na tym zbiorze.
+
+Wobec Uwagi \ref{uwaga:98} i Twierdzenia \ref{theorem:99} (b) jest jasne, że klasy zbiorów dopuszczalnych i mierzalnych w sensie Jordana pokrywają się.
+
+\subsection{Właśności całki Riemanna (wielokrotnej)}
+
+\begin{theorem}
+{
+    \begin{itemize}
+        \item [(a)]
+            Zbiór $\mathfrak{R}(E)$ wszytkich funkcji całkowalnych w sensie Riemanna na zbiorze ograniczonym $E \subset \mathbb{R}^n$ jest przestrzenią liniową względem
+            standardowych operacji dodawania funkcji oraz mnożenia funkcji przez skalar.
+        \item [(b)]
+            Całka Riemanna jest liniowym funkcjonałem 
+            \[
+                \int_{E} : \mathfrak{R}(E) \to \mathbb{R} \quad \text{na przestrzeni} \quad \mathfrak{R}(E).
+            \]
+    \end{itemize}
+}
+\end{theorem}
+
+\begin{proof}
+    Ponieważ suma zbiorów miary zero jest również zbiorem miary zero, zatem punkt (a) wynika bezpośrednio z określenia całki Riemanna i z Kryterium Lebesgue'a.
+    Dalej, mając na względzie liniowość sum Riemanna, przy przejściu do granicy otrzymujemy liniowośc całki Riemanna.
+\end{proof}
+
+\begin{uwaga}
+    Jest jasne, że jeśli $f \in \mathfrak{R}(E)$ i funkcja $f$ jest prawie wszędzie równa zero na $E$, to $\int_{E}f(x)dx = 0$. Oznacza to, że 
+    jeśli dwie funkcje całkowalne w sensie Riemanna na zbiorze $E$ są prawie wszedzię równe na tym zbiorze, to ich całki są również równe.
+    Jeśli więc utworzymy klasy abstrakcji funkcji całkowalnych w sensie Riemanna na zbiorze $E$, to otrzymamy przestrzeń liniową $\overline{\mathfrak{R}}(E)$.
+\end{uwaga}
+
+\begin{theorem}
+{
+    (addytywnośc całki) 
+    \begin{itemize}
+        \item [(a)]
+            Niech $E_1, E_2$ bedą podzbiorami przestrzeni $\mathbb{R}^n$, mierzalnymi w sensie Jordana i niech $f$ będzie funkcją określoną na $E_1 \cup E_2$. Wówczas 
+            \[
+                \Big(\exists \int_{E_1 \cup E_2}f(x)dx\Big) \iff \Big(\exists \int_{E_1}f(x)dx\Big) \land \Big(\exists \int_{E_2}f(x)dx\Big) \implies \Big(\exists \int_{E_1 \cap E_2}f(x)dx\Big).
+            \]
+        \item [(b)]
+            Jeśli ponadto wiadomo, że $\mu(E_1 \cap E_2) = 0$, to przy założeniu istnienia całek zachodzi równośc 
+            \[
+                \int_{E_1 \cup E_2}f(x)dx = \int_{E_1}f(x)dx + \int_{E_2}f(x)dx.
+            \]  
+    \end{itemize}
+}
+\end{theorem}
+
+\begin{theorem}
+{
+    Jeśli $f \in \mathfrak{R}(E)$, to $|f| \in \mathfrak{R}(E)$ oraz $|\int_{E}f(x)dx| \leqslant \int_{E}|f(x)|dx$.
+}
+\end{theorem}
+
+\begin{proof}
+    To, że $|f| \in \mathfrak{R}(E)$ wynika z określenia całki względem zbioru i z Kryterium Lebesgue'a całkowalności funkcji w sensie Riemanna na przedziale.
+    Wskazaną nierównośc otrzymuje się przy przejściu granicznym, z zastosowaniem odpowiedniej nierówności dla sum Riemanna.
+\end{proof}
+
+\begin{theorem}
+{
+    Jeśli funkcja $f : E \to \mathbb{R}$ jest całkowalna w sensie Riemanna na zbiorze $E$ oraz $f(x) \geqslant 0$ dla prawie wszystkich $x \in E$, to $\int_{E}f(x)dx \geqslant 0$.
+}
+\end{theorem}
+
+\begin{proof}
+    Bez straty ogólności możemy założyć, że $f(x) \geqslant 0$ dla każdego $x \in E$. Wtedy $f\chi_E(x) \geqslant 0$ dla prawie wszystkich $x \in \mathbb{R}^n$.
+    Dalej na mocy określenia 
+    \[
+        \int_E f(x)dx = \int_{I \supset E}f\chi_E(x)dx.
+    \]
+    Ostatnia całka istnieje na mocy założenia. Ponieważ jest ona granicą nieujemnych sum Riemanna, zatem jest ona nieujemna.
+\end{proof}
+
+
+
+
+
+
+
+
+
+
+
+\newpage
+
+\setcounter{defcounter}{199}
+\setcounter{uwagacounter}{104}
+
+\begin{defn}
+    Zbiór $S \subset \mathbb{R}^n$ nazywamy powierzchnią (wymiaru $k$) z brzegiem, jeśli dowolny punkt $ \in S$ posiada otoczenie $U$ w $S$,
+    które jest homeomorficzne albo $\mathbb{R}^k$ albo z $H^k$. 
+\end{defn}
+
+\begin{defn}
+    Jeśli przy wskazanym w Definicji \ref{def:200} homeomorfizmie $\varphi : U \to H^k$ punktowi $x \in U$ odpowiada punkt $\varphi(x) \in \partial H^k$, to 
+    $x$ nazywa się punktem brzegu powierzchni (z brzegiem) $S$ i swojego otoczenia $U$. Zbiór wszystkich punktów brzegu nazywamy brzegiem powierzchni $S$ 
+    i oznaczamy go symbolem $\partial S$. 
+\end{defn}
+
+\begin{uwaga}
+    \begin{itemize}
+        \item [(a)] Przypomnijmy, że homemorofzim $\varphi_{ij} : G_i \to G_j$, gdzie $G_i, G_j \subset \mathbb{R}^k$ przekształca 
+            punkty wewnętrzne zbioru $G_i$ w punkty wewnętrzne obrazu $\varphi_{ij}(G_i)$ (to znane Twierdzenie Brouwera). 
+            W ten sposób pojęcie punktu brzegu powierzchni nie zależy od wyboru lokalnej mapy, a zatem powyższe określenie jest poprawne. 
+        \item [(b)]
+            Pojęcie gładkiej (klasy $C^m$) powierzchni $S$ z brzegiem wprowadza się analogicznie jak w przypadku powierzchni bez brzegu wymagając, aby $S$
+            posiadała atlas składający się z map danej klasy gładkości. Przy tym będziemy rozumieli, że dla map w postaci $\varphi : H^k \to U$
+            pochodne cząstkowe odwzorowania $\varphi$ w punktach brzegu $\partial H^k$ liczy się tylko względem zbioru $H^k$, czyli dziedziny przekształcenia $\varphi$. 
+    \end{itemize}
+\end{uwaga}
+
+
+
 \end{justify}
 \end{document} 
