@@ -8286,11 +8286,164 @@ Wobec Uwagi \ref{uwaga:98} i Twierdzenia \ref{theorem:99} (b) jest jasne, że kl
     Ostatnia całka istnieje na mocy założenia. Ponieważ jest ona granicą nieujemnych sum Riemanna, zatem jest ona nieujemna.
 \end{proof}
 
+\begin{wniosek}
+{
+    \begin{itemize}
+        \item [(a)] $(f,g \in \mathfrak{R}(E)) \land (f \leqslant g)$ na $E$ $\implies \Big( \int_{E}f(x)dx \leqslant \int_{E}g(x)dx\Big)$.
+        \item [(b)] 
+            Jeśli $f \in \mathfrak{R}(E)$ i dla każego punktu zbioru dopuszczalnego $E$ spełnione są nierówności $m \leqslant f(x) \leqslant M$, to
+            \[
+                m \mu(E) \leqslant \int_{E}f(x) \leqslant M \mu(E),
+            \]
+        \item [(c)]
+            Jeśli $f \in \mathfrak{R}(E)$, gdzie $E$ jest zbiorem dopuszczalnym, $m = \inf_{x \in E}f(x)$, $M = \sup_{x \in E}f(x)$, to istnieje
+            taka liczba $\theta \in [m, M]$, że 
+            \[
+                \int_{E}f(x)dx = \theta \mu(E).
+            \]
+        \item [(d)]
+            Jeśli $E$ jest zbiorem dopuszczalnym i spójnym, a funkcja $f : E \to \mathbb{R}$ jest ciągła, to istnieje taki punkt $\xi \in E$, że 
+            \[
+                \int_{E}f(x)dx = f(\xi)\mu(E),
+            \]
+            Jeśli przy założeniach punktu (b) przyjmiemy dodatkowo, że $g$ jest funkcją nieujemną i całkowalną w sensie Riemanna na zbiorze $E$, to 
+            \[
+                m \int_E g(x)dx \leqslant \int_E fg(x)dx \leqslant M \int_E g(x)dx,
+            \]
+            (por. Twierdzenie 92; całkowanie iloczynu $fg$ funkcji $f$ i $g$ wynika bezpośrednio z Kryterium Lebesgue'a).
+    \end{itemize}
+}
+\end{wniosek}
 
+\begin{lemat}
+{
+    \begin{itemize}
+        \item [(a)] Jeśli całka Riemanna funkcji nieujemnej na przedziale $I, f : I \to \mathbb{R}$ jest równa zero, to $f(x) = 0$ dla prawie 
+            wszystkich punktów $x \in I$.
+        \item [(b)] Punkt (a) pozostaje prawdziwy, jeśli przedział $I$ zastąpimy dowolnym punktem dopuszczalnym.
+    \end{itemize}
+}
+\end{lemat}
 
+Dowód Lematu \ref{lemat:15} można znaleźć np. w [11], cz. II, s. 130.
 
+\begin{uwaga}
+    Z powyższego lematu wynika, że jeśli $E \subset \mathbb{R}^n$ jest zbiorem mierzalnym w sensie Jordana, to wielkość 
+    \[
+        ||f|| = \int_{E}|f(x)|dx
+    \]
+    jest normą na przestrzeni $\mathfrak{R}(E)$.
+\end{uwaga}
 
+\begin{proof}
+    Istotnie, z równości $\int_E |f(x)|dx = 0$ możemy twierdzić, że funkcja $f$ należy do tej samej klasy równoważności, co i funkcja tożsamościowo równa zeru.
+\end{proof}
 
+Dowody Twierdzenia \ref{theorem:252}, Wniosku \ref{wniosek:96} i Lematu \ref{lemat:15} można znaleźc np. w [11].
+
+\subsection{Zastosowania geometryczne całki podwójnej Riemanna}
+
+Niech $\mathfrak{I}(D)$ będzie funkcją addytywną określona dla każdego prostokąta $D$ zawartego w prostokącie $D_0$ (o wartościach rzeczywistych).
+Rozumując analogicznie jak w dowodzie Twierdzenia \ref{theorem:97} uzyskujemy następujące 
+
+\begin{theorem}
+{
+    Jeśli dla addytywnej funkcji $\mathfrak{I}(D)$ istnieje funkcja $f$ R-całkowalna na $D_0$ i taka, że 
+    \[
+        \inf_{x \in D}f(x)\mu(D) \leqslant \mathfrak{I}(D) \leqslant \sup_{x \in D}f(x)\mu(D),
+    \]
+    to 
+    \[
+        \mathfrak{I}(D) = \iint_D f(x)dx.
+    \]
+}
+\end{theorem}
+
+Omówimy teraz pewne zastosowania geometryczne całki podwójnej Riemanna. Niech $E \subset \mathbb{R}^2$ będzie zbiorem mierzalnym w sensie Jordana 
+o niepustym wnętrzu i niech $f, \varphi, \psi$ będą funkcjami ciągłymi, określonymi na zbiorze $E$ i spełniającymi nierówności:
+\[
+    \varphi(x,y) \leqslant \psi(x,y) \quad \text{oraz} \quad f(x,y) \geqslant 0 \quad \text{dla} \quad (x,y) \in E. 
+\]
+
+Niech $V_1 = \{(x,y,z) \in \mathbb{R}^3 : (x,y) \in E, 0 \leqslant z \leqslant f(x,y)\}$ i $V_2 = \{(x,y,z) \in \mathbb{R}^3 : (x,y) \in E, \varphi(x,y) \leqslant z \leqslant \psi(x,y)\}$.
+Wyznaczymy teraz objętość (miarę Jordana) zbioru $V_1$ i $V_2$. Niech $D_0$ będzie dowolnym prostokątem zawierającym zbiór $E$.
+Wiemy, że miara Jordana jest funkcją addytywną oraz objętośc bryły zawartej w innej bryle nie może być większa od objętości tej ,,obejmującej'' bryły, więc 
+\[
+    \inf_{(x,y) \in D}f \chi_E(x,y)\mu(D) \leqslant |V_1|_D \leqslant \sup_{(x,y) \in D}f \chi_E(x,y)\mu(D).
+\]
+Na mocy Twierdzenia \ref{theorem:255} otrzymujemy następujący wzór na miarę Jordana zbioru $V_1$:
+\[
+    |V_1| = \iint_{D_0}f \chi_E(x,y)dxdx = \iint_{E}f(x,y)dxdy.
+\]
+Jest jasne, że jeśli $f(x,y) \leqslant 0$ dla $(x,y) \in E$, to 
+\[
+    |V_1| = - \iint_{E}f(x,y)dxdy.
+\]
+Ponadto 
+\[
+    |V_2| = \iint_{E}|\psi(x,y) - \varphi(x,y)|dxdy.
+\]
+
+Niech teraz $G$ będzie pewnym obszarem w płaszczyźnie $\mathbb{R}^2$ zmiennych $(x,y)$, mierzalnym w sensie Jordana 
+i niech $z = f(x,y)$ będzie obszarem klasy $C^1$ o wartościach rzeczywistych i ograniczonych pochodnych cząstkowych, 
+określoną na zbiorze $G$. Oznaczmy przez $S$ powierzchnię gładką wyznaczoną przez zbiór $G$ i funkcję $f$ (zob. początek paragrafu 12.5).
+
+Niech $D_0$ będzie pewnym prostokątem zawierającym zbiór $G$. Dokonujemy podziału $P$ prostokąta $D_0$: $P = \{I_i\}$.
+Niech $(\xi_i, \eta_i)$ będzie dowolnym punktem obszaru $G$ należacym do prostokąta $I_i$. Równanie płaszczyzny stycznej do powierzchni $S$
+w punkcie $(\xi_i, \eta_i, z_i)$, posiada zgodnie ze wzorem (\ref{eq:135}), postać 
+\begin{equation}\label{eq:184}
+    z - z_i = p_i(x - \xi_i) + q_i(y - \eta_i),
+\end{equation}
+gdzie $z_i = f(\xi_i, \eta_i)$, $p_i = \frac{\partial f}{\partial x}(\xi_i, \eta_i), q_i = \frac{\partial f}{\partial y}(\xi_i, \eta_i)$.
+
+Cosinus kąta nachylenia $\gamma_i$ tej płaszczyzny do płaszczyzny $Oxy$ wyraża się wzorem 
+\[
+    \cos \gamma_i = \frac{1}{\sqrt{1 + p_i^2 + q_i^2}}.
+\]
+
+Niech $(x_0, y_0) \in G$. Rozważmy wektor $(x-x_0, y-y_0)$ będący rzutem wektora 
+\[
+    (x-x_0, y-y_0, z-z_0) = \Big(x-x_0, y-y_0, \frac{\partial f}{\partial x}(x_0, y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0)(y-y_0)\Big)
+\]
+na płaszczyznę $Oxy$. Mamy 
+\[
+    \begin{aligned}
+       & \frac{{(x-x_0)}^2 + {(y-y_0)^2}}{{{({(x-x_0)}^2 + {(y-y_0)^2})}^\frac{1}{2}\Big({(x-x_0)}^2 + {(y-y_0)^2} + {\frac{\partial f}{\partial x}(x_0, y_0)(x - x_0) + \frac{\partial f}{\partial y}(x_0, y_0)(y-y_0)}^2\Big)}^\frac{1}{2}} = \\
+       & = \frac{1}{{\Big(1 + {(\frac{\partial f}{\partial x})}^2 (x_0,y_0) + {(\frac{\partial f}{\partial y})}^2 (x_0, y_0)\Big)}^\frac{1}{2}}
+    \end{aligned}
+\]
+
+Niech $\sigma_i$ będzie równoległobokiem leżącym na płaszczyźnie (\ref{eq:184}), którego rzutem na płaszczyznę $Oxy$ jest prostokąt $I_i$. Wówczas 
+$I_i = |\sigma_i| \cos \gamma_i$, czyli 
+\[
+    |\gamma_i| = \sqrt{1 + p_i^2 + q_i^2}|I_i|,
+\]
+zatem
+\begin{equation}\label{eq:185}
+    \sum_{i} |\sigma_i| = \sum_{i}\sqrt{1 + p_i^2 + q_i^2}|I_i|
+\end{equation}
+jest sumą pól równoległoboków stycznych do powierzchni (\ref{eq:184}).
+
+\begin{defn}
+    Granicą sum (\ref{eq:185}), gdy $\delta(P) \to 0$, nazywamy polem powierzchni $S$.
+\end{defn}
+
+\begin{theorem}
+{
+    Pole $|S|$ powierzchni $S$ wyraża się wzorem 
+    \begin{equation}\label{eq:186}
+        |S| = \iint_{I \supset G}\sqrt{1 + (D_1 f)^2 + (D_2 f)^2} dxdy = \iint_{G}\sqrt{1 + \Big(\frac{\partial f}{\partial x}\Big)^2 + \Big(\frac{\partial f}{\partial y}\Big)^2}dxdy.
+    \end{equation}
+}
+\end{theorem}
+
+\begin{proof}
+    Suma (\ref{eq:185}) jest pewną sumą Riemanna odpowiadającą całce (\ref{eq:186}), ta zaś istnieje bowiem zbiór $G$ jest mierzalny,
+    a funkcja podcałkowa jest ciągła i ograniczona (zob. Twierdzenie \ref{theorem:250}). 
+    Wobec tego suma (\ref{eq:185}) dąży do całki (\ref{eq:186}), gdy $n \to \infty$.
+\end{proof}
+
+\subsection{Twierdzenie Fubiniego}
 
 
 
