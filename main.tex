@@ -8445,9 +8445,187 @@ jest sumą pól równoległoboków stycznych do powierzchni (\ref{eq:184}).
 
 \subsection{Twierdzenie Fubiniego}
 
+\begin{theorem}
+{
+    (typu Fubiniego) Niech $X \times Y$ będie przedziałem $\mathbb{R}^{n+m}$, będącym produktem kartezjańskim 
+    przedziałów $X \subset \mathbb{R}^m$ i $Y \subset \mathbb{R}^n$. Jeśli funkcja $f : X \times Y \to \mathbb{R}$
+    jest całkowalna w sensie Riemanna na $X \times Y$, to całki 
+    \[
+        \int_{X \times Y}f(x,y)dxdy, \quad \int_{X}dx\int_{Y}f(x,y)dy, \quad \int_{Y}dy\int_{X}f(x,y)dx
+    \]
+    istnieją jednocześnie oraz są sobie równe.
+}
+\end{theorem}
 
+\begin{uwaga}
+    \begin{itemize}
+        \item [(a)]
+            Symbol $\int_{X}dx\int_{Y}f(x,y)dy$ należy rozumieć w następujący sposób: dla ustalonego $x \in X$ oblicza się 
+            całkę Riemanna $F(x) = \int_{Y}f(x,y)dy$, a następnie otrzymaną funkcję całkuje się na przedziale $X$. Przy tym, jeśli 
+            dla pewnego $x \in X$ całka $\int_Y f(x,y)dy$ nie istnieje, to przyjmuje się ze $F(x)$ jest równe dowolnej liczbie należącej do przedziału domkniętego 
+            $[\underline{\int_{Y}}f(x,y)dy, \overline{\int_{Y}}f(x,y)dy]$. Analogicznie znaczenie posiada symbol $\int_{Y}dy\int_{X}f(x,y)dx$.
+        \item [(b)]
+            W odróżnieniu od całki Riemanna po $(n+m)$-wymiarowym przedziale $X \times Y$, który nazywamy \textit{całką wielokrotną}, 
+            kolejno liczone całki z funkcji $f(x,y)$ po przedziale $Y$, a następnie po przedziale $X$, lub po przedziale $X$, a następnie po przedziale $Y$, nazywamy całkami \textit{iterowany} tej funkcji.
+        \item [(c)]
+            Jest jasne, że stosując Twierdzenie \ref{theorem:257} dostateczną ilość razy, można sprowadzić obliczanie całki Riemanna po $k$-wymiarowym przedziale do kolejnego wyliczania jednowymiarowych całek Riemanna.
+        \item [(d)]
+            Twierdzenie \ref{theorem:257} zostało udowodnione dużo wcześniej przed znanym z teorii funkcji rzeczywistych Twierdzeniem Fubiniego, w odniesieniu do którego
+            jest ono szczególnym przypadkiem. Jednak twierdzenia, które pozwalają sprowadzić wyliczenia całek wielokrotnych do kolejnego całkowania w mniejszych wymiarach 
+            nazywa się twierdzeniami typu Fubiniego lub ktrótko, Twierdzeniami Fubiniego.
+    \end{itemize}
+\end{uwaga}
 
+\begin{proof}
+    Każdy podział $P$ przedziału $X \times Y$ jest wyznaczony przez odpowiednie podziały $P_X, P_y$ przedziałów $X$ i $Y$.
+    Przy tym każdy przedział podziału $P$ jest iloczynem kartezjańskim przedziałów $X_i, Y_j$, odpowiednio podziałów $P_X, P_Y$. 
+    Z definicji objętości przedziału mamy $|X_i \times Y_j| = |X_i| \cdot |Y_j|$, gdzie każda z objętości jest liczona w przestrzeni $\mathbb{R}^{n+m}$, $\mathbb{R}^m, \mathbb{R}^n$,
+    do której należyt rozpatrywać przedział. 
 
+    Wykorzystując własności kresu dolnego i górnego, a także określenia dolnych i górnych sum całkowych oraz całek otrzymuje następujące nierówności:
+    \[
+        \begin{aligned}
+            L(f, P) &= \sum_{i,j}\inf_{x \in X_i, y \in Y_i}f(x,y)|X_i \times Y_j| \\
+                    &\leqslant \sum_{i}\inf_{x \in X_i}\Big(\sum_{j} \inf_{y \in Y_j} f(x,y) |Y_j| \Big)|X_i| \\
+                    &\leqslant \sum_{i}\inf_{x \in X_i}\Big( \underline{\int_Y} f(x,y)dy \Big)|X_i| \\
+                    &\leqslant \sum_i \inf_{x \in X_i}F(x)|X_i| \\
+                    &\leqslant \sum_i \sup_{x \in X_i}F(x)|X_i| \\
+                    &\leqslant \sum_i \sup_{x \in X_i}\Big( \overline{\int_Y} f(x,y)dy\Big) |X_i| \\
+                    &\leqslant \sum_i \sup_{x \in X_i}\Big( \sum_j \sup_{y \in Y_j}f(x,y) |Y_j| \Big)|X_i| \\
+                    &\leqslant \sum_{i,j}\sup_{x \in X_i, y \in Y_j}f(x,y)|X_i \times Y_j| = U(f, P).
+        \end{aligned}
+    \]
+
+    Ponieważ $f \in \mathfrak{F}(X \times Y)$, zatem przy $\delta(P) \to 0$ obydwa skrajne wyrazy powyższych nierówności dąża do wartości całki Riemanna funkcji $f$
+    na przedziale $X \times Y$. Stąd wynika, że $F \in \mathfrak{R}(X)$ oraz zachodzi równość 
+    \[
+        \int_{X \times Y}f(x,y)dxdy = \int_X F(x)dx.
+    \]
+    Powyższy dowód został przeprowadzony w przypadku całkowania po przedziale $Y$, a następnie $X$. Jest jasne, że 
+    analogicznie rozumowanie można przeprowadzić w przypadku, gdy wpierw całkujemy po przedziale $X$, a następnie po $Y$.
+\end{proof}
+
+\begin{wniosek}
+{
+    Jeśli $f \in \mathfrak{X \times Y}$, to dla prawie wszystkich $x \in X$ całka $\int_Y f(x,y)dy$ istnieje, a dla 
+    prawie wszystkich $y \in Y$ istnieje całka $\int_X f(x,y)dx$.
+}
+\end{wniosek}
+
+\begin{proof}
+    Z Twierdzenia \ref{theorem:257} (dokładniej z jego dowodu) wynika, że 
+    \[
+        \int_X \Big(\overline{\int_Y}f(x,y)dy - \underline{\int_Y}f(x,y)dy\Big)dx = 0.
+    \]
+    Znajdująca się w nawiasach różnica całki górnej i dolnej jest nieujemna. Na podstawie Lematu \ref{lemat:15} (a) wnioskujemy, że ta 
+    różnica jest równa zero dla prawie wszystkich punktów $x \in X$. Na mocy Kryterium Darboux (Tw. \ref{theorem:249}) całka 
+    $\int_Y f(x,y)dy$ istnieje dla dla prawie wszystkich $x \in X$.
+\end{proof}
+
+\begin{wniosek}
+{
+    Jeśli przedział $I \subset \mathbb{R}^n$ jest iloczynem kartezjańskim przedziałów $I_i = [a_i, b_i]$, $i = 1, \ldots, n$, to 
+    \[
+        \int_I f(x)dx = \int_{a_n}^{b_n}dx_n \int_{a_{n-1}}^{b_{n-1}}dx_{n-1} \ldots \int_{a_1}^{b_1}f(x_1, \ldots, x_n)dx_1.
+    \]
+    Powyższy wzór otrzymuje się oczywiście przez kilkukrotne zastosowanie Twierdzenia Fubiniego.
+}
+\end{wniosek}
+
+\begin{wniosek}
+{
+    Niech $D$ będzie zbiorem ograniczonym zawartym $\mathbb{R}^{n-1}$ i niech $E = \{(x,y) \in \mathbb{R}^n : (x \in D) \land (\varphi_1(x) \leqslant y \leqslant \varphi_2(x))\}$.
+    Jeśli $f$ jest funkcją całkowalną w sensie Riemanna na zbiorze $E$, to
+    \[
+        \int_E f(x,y)dxdy = \int_D dx \int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dy.
+    \]
+}
+\end{wniosek}
+
+\begin{proof}
+    Niech $E_x = \{(x,y) \in \mathbb{R}^n : \varphi_1(x) \leqslant y \leqslant \varphi_2(x)\}$ dla $x \in D$ oraz $E_x = \emptyset$ dla $x \notin E$.
+    Zauważmy, że $\chi_E(x,y) = \chi_D(x) \cdot \chi_{E_x}(y)$. Wykorzystując definicję całki po zbiorze oraz Twierdzenie Fubiniego otrzymujemy 
+    \[
+        \begin{aligned}
+            \int_E f(x,y)dxdy &= \int_{I \supset E}f \chi_E(x,y)dxdy = \int_{I_x \supset D}dx \int_{I_y \supset E_x}f \chi_E(x,y)dy \\
+                &= \int_{I_x}\Big( \int_{I_y}f(x,y)\chi_{E_x}(y)dy \Big)\chi_D(x)dx \\
+                &= \int_{I_x}\Big( \int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y) dy\Big)\chi_D(x)dx \\
+                &= \int_{D}\Big( \int_{\varphi_1(x)}^{\varphi_2(x)}f(x,y)dy \Big)dx.
+        \end{aligned}
+    \]
+
+    Wewnętrzna całka może tutaj także nie istnieć na pewnym zbiorze punktów $x \in D$ miary zero w sensie Lebesgue'a i wtedy przypisuje się jej to samo znaczenie 
+    co w Twierdzeniu Fubiniego.
+\end{proof}
+
+\begin{wniosek}
+{
+    Jeśli w założeniach Wniosku \ref{wniosek:56}, zbiór $D$ jest mierzalny w sensie Jordana, a funkcje $\varphi_i : D \to \mathbb{R}$, $i = 1,2$, są ciągłe,
+    to zbiór $E \subset \mathbb{R}^n$ jest mierzalny w sensie Jordana.
+}
+\end{wniosek}
+
+\begin{proof}
+    Brzeg $\partial E$ zbioru $E$ składa się z dwóch wykresów funkcji ciągłych $\varphi_i : D \to \mathbb{R}$, $i = 1,2$ (będącymi na mocy Przykładu \ref{ex:63} (c)
+    zbiorami miary zero) i pewnego podzbioru iloczynu kartezjańskiego brzegu $\partial D$ zbioru $D \subset \mathbb{R}^{n-1}$ przez 
+    dostatecznie duży jednowymiarowy odcinek długości $I$. Na mocy założenia $\partial D$ mozna pokryć skończonym 
+    układem $(n-1)$-wymiarowych przedziałów, których suma $(n-1)$-wymiarowych objętości jest mniejsza niż $\frac{\varepsilon}{l}$.
+    Iloczyn karteżjanski tych przedziałów przez wybrany odcinek (długości $l$) tworzy pokrycie zbioru $\partial E$ przedziałami, których suma objętości jest mniejsza niż $\varepsilon$.
+\end{proof}
+
+\begin{wniosek}
+{
+    Jeśli w założeniach Wniosku \ref{wniosek:56}, zbiór $D$ jest mierzalny w sensie Jordana, a funkcje $\varphi_i : D \to \mathbb{R}$, $i =1 ,2$ są ciągłe,
+    to jego miara wyraża się wzorem
+    \[
+        \mu(E) = \int_D (\varphi_2(x) - \varphi_1(x))dx
+    \]
+    (zbiór $E$ o takiej strukturze nazywamy zbiorem normalnym).
+}
+\end{wniosek}
+
+\begin{proof}
+    Na mocy wniosku \ref{wniosek:57} zbiór $E$ jest mierzalny w sensie Jordana, a zatem funkcja $f : E \to \{1\}, 1 \in \mathbb{R}$ 
+    jest całkowalna w sensie Riemanna. Korzystając z definicji miary Jordana i Wniosku \ref{wniosek:56} otzymujemy powyższy wzór.
+\end{proof}
+
+\begin{wniosek}
+{
+    Niech $E$ będzie zbiorem mierzalnym w sensie Jordana zawartym w przedziale $I \subset \mathbb{R}^n$.
+    Przedstawmy $I$ w postaci iloczynu kartezjańskiego $I = I_x \times I_y$, $(n-1)$-wymiarowego przedziału $I_x$ i odcinka $I_y$.
+    Wówczas dla prawie wszystkich wartości $y_0 \in I_y$ przekrój $E_{y_0} = \{(x,y) \in E : y = y_0\}$ zbioru $E$ $(n-1)$-wymiarową płaszczyzną 
+    $y = y_0$ jest jej mierzalnym podzbiorem, przy czym 
+    \[
+        \mu(E) = \int_{I_y} \hat{\mu}(E_y)dy,
+    \]
+    gdzie $\hat{\mu}(E_y)$ jest $(n-1)$-wymiarową miarą zbioru $E_y$, jeśli jest on mierzalny w sensie Jordana oraz 
+    dowolną liczbę zawartą między liczbami $\underline{\int_{E_y}}1 \cdot dx$ i $\overline{\int_{E_y}}1 \cdot dx$, 
+    jeśli $E_y$ nie jest zbiorem mierzalnym.
+}
+\end{wniosek}
+
+\begin{proof}
+    Powyższy wniosek wynika bezpośrednio z twierdzenia typu Fubiniego i Wniosku \ref{wniosek:54}, jeśli przyjmiemy w nich $f = \chi_E$.
+    Mamy bowiem $\chi_E(x,y) = \chi_{E_y}(x) \cdot \chi_{I_y}(y)$, a zatem 
+    \[
+        \begin{aligned}
+            \int_{E} \chi_E(x,y)dxdy &= \int_{I \supset E}\chi_E(x,y)dxdy = \int_{I_y}\Big(\int_{I_x \supset E_y} \chi_{E_y}(x) \cdot \chi_{I_y}(y) dx \Big)dy \\
+            &= \int_{I_y}\hat{\mu}(E_y)dy.
+        \end{aligned}        
+    \]
+\end{proof}
+
+\begin{wniosek}
+{
+    (Zasada Cavaliriego) Niech $A$ i $B$ będą dwiema bryłami w przestrzeni $\mathbb{R}^3$, mającymi objętość (to znaczy mierzalnymi w sensie Jordana).
+    Niech $A_c = \{(x,y,z) \in A : z = c\}$ i $B_c = \{(x,y,z) \in B : z = c\}$ będą przekrojami brył $A$ i $B$ płaszczyzną $z = c$.
+    Jeśli dla każdego $c \in \mathbb{R}$ zbiory $A_c$ i $B_c$ są mierzalne w sensie Jordana i posiadają jednakowe pola, to bryły $A$ i $B$ posiadają jednakowe objętości.
+}
+\end{wniosek}
+
+Jest jasne, że Zasadę Cavaliriego można sformułować na przestrzeni $\mathbb{R}^n$ dowolnego wymiaru (skończonego). Zasada ta jest szczególnym przypadkiem Wniosku \ref{wniosek:59}.
+
+\subsection{Całkowanie po zbiorach otwartych. Zamiana zmiennych w całce wielokrotnej}
 
 \newpage
 
