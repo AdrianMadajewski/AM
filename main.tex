@@ -8627,6 +8627,181 @@ Jest jasne, że Zasadę Cavaliriego można sformułować na przestrzeni $\mathbb
 
 \subsection{Całkowanie po zbiorach otwartych. Zamiana zmiennych w całce wielokrotnej}
 
+Następujące twierdzenie jest narzędziem o ogromnym znaczeniu w teorii całkowania.
+
+\begin{theorem}
+{
+    Niech $A \subset \mathbb{R}^n$ i niech $\mathfrak{U}$ będzie pokryciem otwartym zbioru $A$. Wówczas istnieje rodzina $\Phi$ funkcji $\varphi$ klasy $C^\infty$ 
+    określonych na zbiorze otwartym $A$, mająca następujące własności
+    \begin{itemize}
+        \item [(a)] dla każdego $x \in A$ mamy $0 \leqslant \varphi(x) \leqslant 1$,
+        \item [(b)] dla każdego $x \in A$ istnieje taki zbiór otwarty $V$ zawierający $x$, że poza skończoną ilością wszystkie $\varphi \in \Phi$ są równe zero na $V$,
+        \item [(c)] dla każdego $x \in A$ mamy $\sum_{\varphi \in \Phi}\varphi(x) = 1$ (na mocy (b) dla każego $x$ suma ta jest skończona w pewnym zbiorze otwartym zawierającym $x$),
+        \item [(d)] dla każdej funkcji $\varphi \in \Phi$ istnieje taki zbiór otwarty $U \in \mathfrak{U}$, że $\phi = 0$ poza pewnym zbiorem domkniętym zawartym w $U$.
+    \end{itemize}
+}
+\end{theorem}
+
+Dowód Twierdzenia \ref{theorem:258} można znaleźc na przykład w [10], s. 75-76.
+
+\begin{defn}
+    Rodzina $\Phi$ spełniająca własności (a)-(c) nazywa się rozkładem jedności klasy $C^\infty$ dla zbioru $A$.
+    Jeśli $\Phi$ spełnia także warunek (d), to mówimu, że on jest podporządkowany pokryciu $\mathfrak{U}$.
+\end{defn}
+
+\begin{defn}
+    Mówimy, że pokrycie otwarte $\mathfrak{U}$ zbioru otwartego $A \subset \mathbb{R}^n$ jest dopuszczalne, jeśli każdy zbiór $U \in \mathfrak{U}$ jest zawarty $A$.
+\end{defn}
+
+\begin{defn}
+    Niech $ f : A \to \mathbb{R}$ będzie taką funkcją, że dla każdego punktu ze zbioru $A$ istnieje jego otoczenie otwarte (zawarte w $A$), na którym funkcja jest ograniczona 
+    i niech zbiór punktów nieciągłości funkcji $f$ ma miarę zero. Oznaczmy przez $\mathfrak{U}$ pokrycie otwarte zbioru $A$ otrzymane ze zbiorów rozważanych powyżej i niech $\Phi$ będzie 
+    podporządkowany pokryciu $\mathfrak{U}$. Wówczas wszystkie całki $\int_A \varphi |f| dx$ istnieją.
+\end{defn}
+
+Mówimy, że funkcja $f$ jest całkowalna (w szerszym sensie), jeżeli szereg $\sum_{\varphi \in \Phi}\int_{A}\varphi |f| dx$ jest zbieżny.
+Stąd wynika zbieżność szeregu $\sum_{\varphi \in \Phi}|\int_A \varphi f dx|$, a stąd bezwględna zbieżność szeregu $\sum_{\varphi \in \Phi}\int_A \varphi f dx$.
+Całkę $\int_A f dx$ definiujemy jako sumę tego szeregu.
+
+\begin{theorem}
+{
+    \begin{itemize}
+        \item [(a)] Jeśli $\Psi$ jest innym rozkładem jedności podporządkowanym dopuszczalnemu pokryciu $\mathfrak{U}$' zbioru $A$, to 
+            $\sum_{\psi \in \Psi}\int_A \psi |f|dx$ jest także zbieżny oraz 
+            \[
+                \sum_{\varphi \in \Phi}\int_A \varphi f dx = \sum_{\psi \in \Psi}\int_A \psi f dx.
+            \]
+        \item [(b)] Jeśli $A$ jest zbiorem ograniczonym, a $f$ - funkcją ograniczoną, to $f$ jest całkowalna w szerszym sensie. 
+        \item [(c)] Jeśli $A$ jest zbiorem mierzalnym w sensie Jordana, a $f : A \to \mathbb{R}$ jest funkcją ograniczoną to Definicje \ref{def:179} i \ref{def:183} pokrywają się.
+    \end{itemize}
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc w książce [10], s. 77-78.
+
+W oparciu o Twierdzenie \ref{theorem:258} dowodzi się bardzoz ważne.
+
+\begin{theorem}
+{
+    (o zamianie zmiennej) Niech $A \subset \mathbb{R}^n$ będzie zbiorem otwartym i niech $g : A \to \mathbb{R}^n$ będzie taką funkcją $1 : 1$ mającą ciągła pochodną, że $J_g(x) \neq 0$ dla 
+    wszystkich $x \in A$. Wówczas jeśli $f : g(A) \to \mathbb{R}^n$ jest całkowalna, to 
+    \[
+        \int_{g(A)}f = \int_A (f \circ g) \cdot |J_g|.
+    \]
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc w książce [10], s. 89-92.
+
+W zastosowaniach praktycznych wykorzystujemy często następujące twierdzenie o zamiane zmiennej.
+
+\begin{theorem}
+{
+    Niech $\varphi : D_t \to D_x$ będzie przekształceniem zbioru mierzalnego w sensie Jordana $D_i \subset \mathbb{R}^n$ w zbiór $D_x \subset \mathbb{R}^n$ mierzalny w sensie Jordana.
+    Załóżmy, że w $D_t$ i $D_x$ można wskazać takie zbiory $S_t$ i $S_x$ miary zero w sensie Lebesgue'a, że $D_t \setminus S_t$ i $D_x \setminus S_x$ są zbiorami otwartymi,
+    a $\varphi$ przekształca dyfeomorficznie pierwszy z tych zbiorów na drugi i wielkość $|J_\varphi|$ jest określona i ograniczona w $D_t$.
+    Jeśli funkcja $f$ jest całkowalna w sensie Riemanna na $D_x$, to $(f \circ g)|J_\varphi|$ jest całkowalna w sensie Riemanna na $D_t$ oraz zachodzi równośc 
+    \[
+        \int_{D_x}f(x)dx = \int_{D_t}\Big((f \circ g)|J_\varphi|\Big)(t)dt
+    \]
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźć w [11], cz. II, s. 149-151.
+
+Warunek $J_g(x) \neq 0$ z Twierdzenia \ref{theorem:260} można wyeliminować stosując następujące
+
+\begin{theorem}
+{
+    (Sara) Niech $A \subset \mathbb{R}^n$ będzie otwarty, $g : A \to \mathbb{R}^n$ - funkcją ciągłą mającą pochodną i $B = \{x \in A : J_g(x) = 0\}$.
+    Wtedy $g(B)$ ma miarę zero (w sensie Lebesgue'a).
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc w książce [10], s. 82-83.
+
+\section{Powierzchnie i formy różniczkowe w $\mathbb{R}^n$}
+
+\begin{defn}
+    Powierzchnią wymiaru $k$ ($k$-wymiarową powierzchnią lub $k$-wymiarową rozmaitościa) w $\mathbb{R}^n$ nazywamy taki zbiór $S \subset \mathbb{R}^n$,
+    że każdy jego punkt posiada otoczenie w $S$ (otoczenie punktu $x \in S \subset \mathbb{R}^n$ nazywamy zbiór $U_S = S \cap U(x)$, gdzie 
+    $U(x)$ jest otoczeniem punktu $x \in \mathbb{R}^n$) homeomorficzne z $\mathbb{R}^k$. 
+\end{defn}
+
+\begin{defn}
+    Przekształcenie $\varphi : \mathbb{R}^k \to U \subset S$ ($U$ jest uproszczonym zapisem $U_S(x)$) 
+    oznaczające homeomorfizm występujący w Definicji \ref{def:185} nazywamy mapą lub lokalną mapą powierzchni $S$. $\mathbb{R}^k$ dziedziną parametrów, a $U$
+    - dziedziną działania mapy na powierzchni $S$. 
+\end{defn}
+
+Lokalna mapa wprowadza w $U$ współrzędne krzywoliniowe, przyporządkowuje punktowi $x = \varphi(t) \in U$ element $t = (t_1, \ldots, t_k) \in \mathbb{R}^k$.
+
+\begin{defn}
+    Powierzchnię, którą można opisać przy pomocy tylko jednej mapy nazywamy elementarną.
+\end{defn}
+
+Wykres funkcji ciągłej $f : (a,b) \to \mathbb{R}$ jest przykładem powierzchni elementarnej (zob. ćw.).
+
+\begin{defn}
+    Zbiór $A(S) := \{\varphi_i : I_{i}^k \to U_i, i \in \mathbb{N}\}$ lokalnych map powierzchni $S$ ($I_i^k$ oznacza kostkę otwartą w przestrzeni $\mathbb{R}^k$),
+    których dziedziny działania w sumie pokrywają całą powierzchnię (to jest $S = \sum_i U_i$) nazywamy atlasem powierzchni $S$.
+    (pamiętajmy o tym, że kostka otwarta $I_i^k$ jest homeomorficzna z przestrzenią $\mathbb{R}^k$).
+\end{defn}
+
+\begin{theorem}
+{
+    Jeśli odwzorowanie $I^k \to U \subset S$ jest klasy $C^1(I^k, \mathbb{R}^n)$ oraz w każdym punkcie kostki $I^k$ posiada maksymalny rząd $k$, to istnieje liczba 
+    $\varepsilon > 0$ i taki dyfeomorfizm $\varphi_\varepsilon : I_x^n \to \mathbb{R}^n$ kostki $I_x^n = \{t \in \mathbb{R}^n : |t_i| < \varepsilon, i = 1, \ldots, n \}$ wymiary $n$ 
+    w przestrzeni $\mathbb{R}^n$, że $\varphi|_{I^k \cap I^n_x} = \varphi_{\varepsilon}|_{I^k \cap I_x^n}$.
+}
+\end{theorem}
+
+\begin{uwaga}
+    Powierzchnia gładka określona w Definicji \ref{def:163} jest oczywiście powierzchnią w sensie Definicji \ref{def:185}, ponieważ 
+    przekształcenia $x = \psi^{-1}(t_1, \ldots, t_k, 0, \ldots, 0) = \phi(t_1, \ldots, t_k)$ gdzie $\psi$ jest dyfeomorfizmem określonym 
+    w Definicji \ref{def:185}, oczywiście określa lokalną parametryzację (lokalną mapę) powierzchni.
+    Z Twierdzenia \ref{theorem:263} wynika, że możemy przyjąc następujące określenie powierzchni gładkiej w $\mathbb{R}^n$, równoważne Definicji \ref{def:185}.
+\end{uwaga}
+
+\begin{defn}
+    Powierzchnie wymiaru $k$ w $\mathbb{R}^n$ (określoną w Definicji \ref{def:185}) nazywamy gładką (klasy $C^m, m \geqslant 1$), jeśli posiada ona 
+    atlas, którego lokalne mapy są gładkie (klasy $C^m, m \geqslant 1$) oraz w każdym punkcie swojej dziedziny posiada rząd $k$.
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)] Sfera w przestrzeni $\mathbb{R}^n$ opisana równaniem 
+        \[
+            x_1^2 + \ldots + x_n^2 = r^2 \quad (r > 0)
+        \]
+        jest $(n-1)$-wymiarową gładką powierzchnią w $\mathbb{R}^n$. W szczególnośći okrąg w $\mathbb{R}^2$ opisany równaniem 
+        \[
+            x_1^2 + x_2^2 = r^2
+        \]
+        jest $1$-wymiarową gładką powierzchnią w $\mathbb{R}^2$.
+        \item [(b)]
+            Walec opisany równaniem 
+            \[
+                x_1^2 + \ldots + x^2_k = r^2 \quad (r > 0)
+            \]
+            dla $k < n$ jest $(n-1)$-wymiarową powierzchnią w $\mathbb{R}^n$, będącą iloczynem kartezjanskim $(k-1)$-wymiarowej sfery w przestrzeni zmiennych $(x_1, \ldots, x_k)$ i 
+            $(n-k)$-wymiarowej płaszczyzny zmiennych $(x_{k+1}, \ldots, x_n)$.
+        \item [(c)]
+            Jeśli prostokąt skleimy wzdłuż jednych krawędzi to możemy otrzymać pierścień, albo powierzchnię walcową. Jeśli natomiast skleimy prostokąt obkręcając jeden z boków to otrzymamy 
+            powierzchnię nazywaną wstęga Möbiusa. (zob. ćw.)
+    \end{itemize}
+\end{ex}
+
+
+
+
+
+
+
+
+
+
+
 \newpage
 
 \setcounter{defcounter}{199}
