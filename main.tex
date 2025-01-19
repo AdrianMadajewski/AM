@@ -8792,20 +8792,158 @@ Wykres funkcji ciągłej $f : (a,b) \to \mathbb{R}$ jest przykładem powierzchni
     \end{itemize}
 \end{ex}
 
+Zajmiemy się teraz pojęciem orientacji powierzchni. Przypomnijmy wpierw, że przejście od układu wektorów liniowo niezależnych $e_1, \ldots, e_n$ 
+w przestrzeni $\mathbb{R}^n$ do układu $\hat{e_1}, \ldots, \hat{e_n}$ jest okreslone przy pomocy macierzy kwadratowej $(a^i_j)$,
+powstającej z rozkładu $\hat{e_j}=a^i_je_i$. Wyznacznik tej macierzy jest zawsze różny od zera (w przeciwnym przypadku otrzymalibiśmy sprzeczność z liniową niezależnośćia wektorów
+$\hat{e_j}$) i dlatego wszystkie bazy przestrzeni $\mathbb{R}^n$ rozkładają się na dwie klasy równoważności, jeśli do jednej klasy równoważnośći zaliczymy te bazy, 
+dla których wyznacznik macierzy przejśćia jest dodatni.
+
+\begin{defn}
+    Klasy równoważności powyżej nazywami klasami orientacji baz w przestrzeni $\mathbb{R}^n$. Zadać orientację w przestrzeni $\mathbb{R}^n$ oznacza ustalić jedną z klas 
+    orientacji baz przestrzeni $\mathbb{R}^n$. Zorientowana przestrzen $\mathbb{R}^n$ to przestrzeń $\mathbb{R}^n$ z ustaloną klasą orientacji jej baz.
+\end{defn}
+
+Baza w $\mathbb{R}^n$ wyznacza w tej przestrzeni układ współrzędnych i przejście od jednego układu współrzędnych do drugiego jest wyznaczone przez macierz $(a_i^j)$ transponowaną 
+do odpowiedniej macierzy $(a_j^i)$. Ponieważ wyznaczniki tych macierzy są jednakowe, zatem wszystko powiedziane o orientacji można przenieść na klasy orientacji współrzędnych w $\mathbb{R}^n$.
+
+Niech teraz $G$ i $D$ będą dwoma dyfeomorficznymi zbiorami otwartymi i spójnymi w przestrzeni $\mathbb{R}^n$ ze współrzędnymi kartezjańskimi $(x_1, \ldots, x_n)$ oraz 
+($t_1, \ldots, t_n)$. Dyfeomorfizm $\varphi : D \to G$ można traktować jako wprowadzenie w zbiorze $G$ współrzędnych krzywoliniowych $(t_1, \ldots, t_n)$ według 
+równości $x = \varphi(t)$, to znaczy punkt $x \in G$ jest opisany przez współrzędne $(t_1, \ldots, t_n)$ punktu $t = \varphi^{-1}(x) \in D$.
+Jeśli w każdym punkcie $t \in D$ będziemy rozpatrywali bazę $e_1, \ldots, e_n$ przestrzeni stycznej $T\mathbb{R}^n_i$ złożoną z wektorów 
+kierunkowych osi współrzędnych, to w $D$ powstaje ,,pole'' baz. Ponieważ $\varphi : D \to G$ jest dyfeomorfizmem, zatem przekształcenie przestrzeni stycznych 
+$\varphi'(t) : TD_t \to TG_{x = \varphi(t)}$ określone wzorem 
+\[
+    TD_t \ni e \to \varphi'(t)e = \xi \in TG_x
+\]
+w każdym punkcie $t$ jest izomorfizmem przestrzeni stycznych. Oznacza to, że z bazy $e_1, \ldots, e_n$ w $TD_t$ otrzymuje się bazę
+$\xi_1 = \varphi'(t)e_1, \ldots, \xi_n = \varphi'(t)e_n$ w $TG_x$, a pole baz na $D$ przekształca się w pole baz na $G$.
+Ponieważ $\varphi \in C^1(D, G)$, to pole wektorowe $\xi(x) = \xi(\varphi(t)) = \varphi'(t)e(t)$ jest ciągłe w $G$, jeśli pole wektorowe $e(t)$
+jest ciągłe w $D$.
+
+Rozpatrzmy teraz parę dyfeomorfizmów $\varphi_i : D_i \to G$, $i = 1,2$, które według wzoru $x = \varphi(t^i)$ wprowadza w tym samym obszarze $G$
+dwa układy współrzędnych krzywoliniowych $(t_1^1, \ldots, t_n^1)$ oraz $(t_1^2, \ldots, t_n^2)$. Wzajemnie odwrotne dyfeomorfizmy $\varphi^{-1}_2 \circ \varphi_1 :
+D_1 \to D_2, \varphi_1^{-1} \circ \varphi_2 : D_2 \to D_1$ tworzą przejścia między tymi układami współrzędnych.
+Jakobiany tych przekształceń w odpowiadających sobie punktach zbiorów $D_1$ i $D_2$ są wzajemnie odwrotne i dlatego posiadają ten sam znak.
+Ponieważ obszar $G$ (a więc i $D_1$, $D_2$) jest spójny, to wobec ciągłości i różności od zera rozpatrywanych jakobianów posiadają one ten sam znak we wszystkich 
+punktach zbiorów $D_1$ i $D_2$. 
+
+\begin{defn}
+    Wprowadzone w powyższy sposób w obszarze $G$ układy współrzędnych krzywoliniowych dzielą się na dwie klasy równoważności, jeśli do jednej klasy zaliczymy 
+    te układy, których wzajemne przejścia posiadają dodatni jakobian. Takie klasy równoważności nazywa się klasami orientacji układów współrzędnych krzywoliniowych 
+    w obszarze $G$. Określić orientację w obszarze $G$ oznacza ustalić w $G$ klasę orientacji jego układów współrzędnych krzywoliniowych.
+\end{defn}
+
+\begin{uwaga}
+    \begin{itemize}
+        \item [(a)]
+            Jeśli zbiór $G$ jest otwarty, ale niekoniecznie spójny, to na to aby zorientować zbiór $G$ wystarczy podać 
+            zorientowaną bazę na każdej spójnej składowej zbioru $G$. Oznacza, to że jeśli zbiór $G$ posiada $m$-składowych, to można go 
+            zorientować na $2^m$ sposobów (zob. Twierdzenie \ref{theorem:265}).
+            Można bowiem pokazać, że orientacja obszaru $G$ jest określona, jeśli wskaże się przynajmniej w jednym punkcie $x \in G$ bazę,
+            która orientuje przestrzeń $TG_x$.
+        \item [(b)]
+            To samo co powiedzieliśmy o orientacji obszaru $G \subset \mathbb{R}^n$ można bez zmian przenieść na przypadek $k$-wymiarowej powierzchni $S \subset \mathbb{R}^n$,
+            określonej przy pomocy jednej mapy.
+    \end{itemize}
+\end{uwaga}
+
+Nietrudno można dowieść następujące.
+
+\begin{theorem}
+{
+    Wzajemne przejścia od jednego układu współrzędnych krzywoliniowych na gładkiej powierzchni $S \subset \mathbb{R}^n$ do drugiego są dyfeomorfizmami tego samego 
+    stopnia gładkości co i mapy powierzchni.
+}
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc w [7], cz. II, s. 177.
+
+Niech teraz $S$ będzie $k$-wymiarową gładką powierzchnia w $\mathbb{R}^n$ i niech $\varphi_i : I_i^k \to U_i$, $\varphi_j : I^k_j \to U_j$
+będą dwoma lokalnymi mapami powierzchni $S$, których dziedziny działania przecinają się, to jest $U_i \cap U_j \neq \emptyset$.
+Wówczas wobec Twierdzenia \ref{theorem:264} przekształcenia $\varphi_{ij} : I^k_{ij} \to I^{k}_{ji}, \varphi_{ji} : I^k_{ji} \to I^k_{ij}$,
+gdzie $I^k_{ij} = \varphi_i^{-1}(U_j), I^k_{ji} = \varphi_j^{-1}(U_i)$ są dyfemorofizmami.
+
+\begin{defn}
+    Dwie lokalne mapy danej powierzchni nazywami zgodnymi, jeśli dziedziny ich działania są rozłącznę, lub jeśli ich przekrój jest niepusty oraz wzajemne przejścia we wspólnej dziedzinie 
+    działania tych lokalnych map są dyfeomorfizmami o dodatnim jakobianie.
+\end{defn}
+
+\begin{defn}
+    Atlas powierzchni nazywamy zorientowanym atlasem powierzchni, jeśli składa się on z parami zgodnych map.
+\end{defn}
+
+\begin{defn}
+    Powierchnie nazywamy zorientowaną, jeśli posiada ona zorientowany atlas. W przeciwnym przypadku powierzchnie nazywamy nieorientowalną.
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Powierzchnia elementarna, określona przy pomocy jednej mapy jest orientowalna.
+        \item [(b)]
+            Okrąg i ogólnie sfera $k$-wymiarowa są przykładami powierzchni orientowalnych, co pokazuje się przez bezpośrednie wskazanie atlasu sfery, składającego się ze zgodnych map. (zob. ćw.)
+        \item [(c)] Można pokazać, że wstęga Möbiusa jest przykładem powierzchni nieorientowalnej.
+    \end{itemize}
+\end{ex}
+
+Formalnie określenie orientacji powierzchni wymaga jeszcze wprowadzenia następujących trzech definicji.
+
+\begin{defn}
+    Dwa orientujące atlasy danej powierzchni nazywami równoważnymi, jeśli ich suma jest także orientującym atlasem tej powierzchni.
+\end{defn}
+
+\begin{defn}
+    Klasę równoważności orientujących atlasów danej powierzchni względem powyższej relacji równoważności nazywamy klasą orientacji atlasów powierzchni lub po prostu 
+    orientacją powierzchni.
+\end{defn}
+
+\begin{defn}
+    Powierzchnią zorientowaną nazywamy powierzchnię z ustaloną klasą jej atlasów (to jest z ustaloną na niej orientacją).
+    Zorientować powierzchnię oznacza wskazać określoną klasę orientacji zorientowanych atlasów tej powierzchni.
+\end{defn}
+
+Można udowodnić następujące 
+
+\begin{theorem}
+    Orientowalna powierzchnia posiada dokładnie dwie orientacje.
+\end{theorem}
+
+Dowód powyższego twierdzenia można znaleźc w [11], cz. II (Rozd. XV, Par. 2, p.3).
+
+W praktyce stosuję się często następujący sposób określania orientacji powierzchni, znajdującej się w zorientowanej przestrzeni.
+Niech $S$ będzie orientowalną $(n-1)$-wymiarową powierzchnią, znajdująca się w przestrzeni $\mathbb{R}^n$ z ustaloną bazą $e_1, \ldots, e_n$.
+Niech $TS_x$ będzie $(n-1)$-wymiarową płaszczyzną styczną do $S$ w punkcie $x \in S$, a $n$- wektorem ortogonalnym do powierzchni $S$ w punkcie $x$.
+Jeśli przy ustalonym wektorze $n$ wybierziemy w $TS_x$ baże $\xi_1, \ldots, x_{n-1}$ tak by bazy $e_1, \ldots, e_n$ oraz $(n, \xi_1, \ldots, \xi_{n-1}) = (\hat{e_1}, \ldots, \hat{e_n})$
+należały do tej samej klasy orientacji powierzchni $\mathbb{R}^n$, to można łatwo sprawdzić, że takie bazy $\xi_1, \ldots, \xi_{n-1}$ płaszczyzny 
+$TS_x$ należą do tej samej klasy orientacji rozważanej płaszczyzny. Oznacza, to że wskazane klasy orientacji płaszczyzny $TS_x$, a przez to wskazanie na 
+spójnej powierzchni zorientowanej może być wykonane przez podanie wektora ortogonalnego.
+
+\begin{defn}
+    Spójne $(n-1)$-wymiarowe powierzchnie w przestrzeni $\mathbb{R}^n$, na których istnieje (jednoznaczne) ciągłe pole jednostkowych wektorów ortogonalnych
+    nazywami dwustronnymi.
+\end{defn}
+
+Dla przykładu sfera, płaszczyzna w $\mathbb{R}^3$ są przykładami powierzchni dwustronnych, w odróżnieniu od wstęgi Möbiusa, która w tym sensie jest powierzchnią jednostronną. 
+
+W przypadku jednowymiarowym, to znaczy kiedy powierzchnia sprowadza się do obrazu krzywej, jej orientację określa się często przez podanie wektora stycznego do krzywej 
+w pewnym jej punkcie i wówczas często zamiast orientacji krzywej mówimy o kierunku ruchu wzdłuż krzywej.
 
 
+\begin{defn}
+    Jeśli na płaszczyźnie w $\mathbb{R}^2$ jest wybrana baza orientującą tę przestrzeń oraz jest określona krzywa zamknięta, to dodatnim kierunkiem obchodzu (wzdłuż krzywej)
+    ograniczonego tą krzywą obszaru $D$ przyjmujemy taki, przy którym baza $n, v$, gdzie $n$ jest wektorem zewnętrznym w stosunku do $D$ i ortogonalnym do krzywej, a $v$ - wektorem prędkości obchodzu, jest zgodna z orientującą bazą $\mathbb{R}^2$.
+\end{defn}
 
+To oznacza, że przy tradycyjnej bazie w $\mathbb{R}^2$ dodatnim obchodzem będzie ruch przeciwny do ruchu wskazówek zegara, przy którym zbiór ograniczony tą krzywą, będzie pozostawał po lewej stronie.
 
+\subsection{Brzeg powierzchni. Pole powierzchni}
 
+Niech $\mathbb{R}^k$ będzie przestrzenią euklidesową wymiaru $k$, ze współrzędnymi kartezjańskimi $t_1, \ldots, t_k$.
+Rozważmy zbiór $H^k := \{t \in \mathbb{R}^k : t_1 \leqslant 0\}$, $(k-1)$-wymiarową płaszczyznę
+$\partial H^k := \{t \in \mathbb{R}^k : t_1 = 0\}$ nazywamy brzegiem zbioru $H^k$.
 
-
-
-
-
-\newpage
-
-\setcounter{defcounter}{199}
-\setcounter{uwagacounter}{104}
+Zauważmy, że zbiór $H^k \setminus \partial H^k$ jest $k$ -wymiarową powierzchnią.
+Natomiast zbiór $H^k$ będzie kanonicznym przedstawicielem powierzchni z brzegiem, którą opiszemy poniżej.
 
 \begin{defn}
     Zbiór $S \subset \mathbb{R}^n$ nazywamy powierzchnią (wymiaru $k$) z brzegiem, jeśli dowolny punkt $ \in S$ posiada otoczenie $U$ w $S$,
@@ -8827,10 +8965,312 @@ Wykres funkcji ciągłej $f : (a,b) \to \mathbb{R}$ jest przykładem powierzchni
             Pojęcie gładkiej (klasy $C^m$) powierzchni $S$ z brzegiem wprowadza się analogicznie jak w przypadku powierzchni bez brzegu wymagając, aby $S$
             posiadała atlas składający się z map danej klasy gładkości. Przy tym będziemy rozumieli, że dla map w postaci $\varphi : H^k \to U$
             pochodne cząstkowe odwzorowania $\varphi$ w punktach brzegu $\partial H^k$ liczy się tylko względem zbioru $H^k$, czyli dziedziny przekształcenia $\varphi$. 
+        \item [(c)]
+            Ponieważ $\mathbb{R}^k$ można poprzez dyfeomorfizm klasy  $C^\infty$ przekształcić w kostkę $I^k = \{t \in \mathbb{R}^k : |t_i| < 1, i =1 ,\ldots, k\}$ w ten sposób, że 
+            $H^k$ przekształci się w podzbiór $I_{H}^k \subset I^k$ określony dodatkowym warunkiem $t_1 \leqslant 0$, zatem jest jasne, że 
+            w określeniu powierzchni z brzegiem (również w przypadku jej gładkośći) można by zamienić $\mathbb{R}^k$ na $I^k$, $H^k$ na kostke $I^k_{H}$
+            lub na kostkę $\overline{I^k} = I^k \cup I^{k-1}$, gdzie $I^{k-1} = \{t \in \mathbb{R}^k : t_1 = 1, |t_i| < 1, i = 2, \ldots, k\}$.
     \end{itemize}
 \end{uwaga}
 
+\begin{theorem}
+{
+    Brzeg $k$-wymiarowej powierzchni klasy $C^m$ jest powierzchnią tej samej klasy gładkości, przy czym bez brzegu i o jedynkę mniejszego wymiaru w porównaniu do wyjściowej powierzchni z brzegiem.
+}
+\end{theorem}
 
+\begin{proof}
+    Istotnie jeśli $A(S) = \{(H^k, \varphi_i, U_i)\} \cup \{(\mathbb{R}^k, \varphi_j, U_j)\}$ jest atlasem powierzchni z brzegiem, to $A(\partial S) = \{(\mathbb{R}^{k-1}, \varphi_i |_{\partial H^k = \mathbb{R}^{k-1}}, U_i)\}$
+    jest oczywiście atlasem tej samej klasy gładkości dla brzegu $\partial S$.
+\end{proof}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)] $n$-wymiarowa kula domknięta $\overline{B^n} \subset \mathbb{R}^n$ jest $n$-wymiarową powierzchnią z brzegiem.
+            Jej brzegiem jest $(n-1)$-wymiarowa sfera (kulę domkniętą $\overline{B^n}$ nazywamy często $n$-wumiarowym dyskiem)
+        \item [(b)] Kostka domknięta $\overline{I^n} \subset \mathbb{R}^n$ jest również $n$-wymiarową powierzchnią z brzegiem.
+        \item [(c)] Wstęga Möbiusa zawarta w $\mathbb{R}^3$ jest przykładem dwuwymiarowej powierzchni z brzegiem (zob. ćw.).
+    \end{itemize}
+\end{ex}
+
+Jeśli w przestrzeni $\mathbb{R}^k$ jest ustalona orientująca baza wektorów jednostkowych $e_1, \ldots, e_k$, która indukuje w niej współrzędne kartezjańskie $x_1, \ldots, x_k$,
+to wektory $e_2, \ldots, e_k$ na brzegu $\partial H^k = \mathbb{R}^{k-1}$ i zbioru $H^k := \{t \in \mathbb{R}^k : t_1 \leqslant 0\}$
+określają orientację, która uważamy za zgodną z daną bazą $e_1, \ldots, e_k$, która orientuje $H^k$.
+
+Można udowodnić następujące (zob. [11], cz. II, s. 185)
+
+\begin{theorem}
+{
+    Brzeg $\partial S$ - gładkiej zorientowanej powierzchni $S$ sam jest gładką powierzchnią zorientowaną (może być nawet niespójną)
+}
+\end{theorem}
+
+\begin{defn}
+    Jeśli $A(S) = \{(H^k, \varphi_i, U_i)\} \cup \{(\mathbb{R}^k, \varphi_j, U_j)\}$ jest orientującym atlasem lokalnych map powierzchni $S$ z brzegiem $\partial S$,
+    to \\
+    $A(\partial S) = \{(\mathbb{R}^{k-1}, \varphi_i |_{\partial H^k = \mathbb{R}^{k-1}}, U_i)\}$ jest orientującym atlasem brzegu (co poazuje się w dowodzie 
+    Twierdzenia \ref{theorem:267}). Wprwadzona przez niego orientacja brzegu $\partial S$ nazywa się orientacją brzegu, zgodną z orientacją danej powierzchni.
+\end{defn}
+
+\begin{uwaga}
+    W praktyce stosuje się często następujący sposób sprawdzania zgodności orientacji powierzchni i jej brzegu. Weźmy $k$-wymiarową płaszczyźnę $TS_{x_0}$ 
+    styczną do gładkiej powierzchni $S$ w punkcie $x_0$ brzegu $\partial S$. Kierując pierwszy wektor bazy $\xi_1, \ldots, \xi_n$ wektorów jednostkowych 
+    , orientującej $S$ w kierunku normalnej do $S$ i w stronę zewnętrzną w stosunku do lokalnej projekci $S$ na $TS_{x_0}$ otrzymujemy w $(k-1)$-wymiarowej 
+    płaszczyźnie $T\partial S_{x_0}$ stycznej do $\partial S$ w punkcie $x_0$, baże $\xi_2, \ldots, \xi_n$, która 
+    okre śla orientację $T \partial S_{x_0}$, a więc i $\partial S$ zgodną z bazą $\xi_1, \ldots, \xi_n$ orientacji powierzchni $S$.
+\end{uwaga}
+
+\begin{defn}
+    (indukcyjne określenie powierzchni kawałkami gładkiej)
+    Punkt będziemy uważali za zerowymiarową powierchnię dowolnej klasy gładkości.
+
+    Jednowymiarową powierzchnią kawałkami gładką (krzywą kawałkami gładką) nazywamy taką krzywą w $\mathbb{R}^n$, która po ,,wyrzuceniu'' z niej 
+    skończonej lub przeliczalnej ilości powierzchni zerowymiarowych (punktów) ,,rozpada się'' na jednowymiarowe powierzchnie gładkie (krzywe).
+
+    Powierzchnię $S \subset \mathbb{R}^n$ wymiaru $k$ nazywamy kawałkami gładką, jeśli można ,,wyrzucić'' z niej skończoną lub 
+    przeliczalną liczbę powierzchni kawałkami gładkich wymiary niewiększego niż $(k-1)$ tak, że rozpada się ona na gładkie $k$-wymiarowe powierzchnie $S_i$ (z brzegiem lub bez).
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)] Brzeg kąta płaskiego i brzeg kwadratu są krzywymi kawałkami gładkimi.
+        \item [(b)] Brzeg sześcianu jest dwuwymiarową powierzchnią kawałkami gładką (zob. ćw.)
+    \end{itemize}
+\end{ex}
+
+Zajmiemy się teraz orientacją powierzchni kawałkami gładkiej.
+
+Punkt (zerowymiarową powierzchnię) przyjęto orientować przypisując mu znak $+$ lub $-$. 
+W szczególności brzeg odcinka $[a,b] \subset \mathbb{R}$ składający się z dwóch punktów $a,b$ jeśli odcinek jest zorientowany kierunkiem od $a$ do $b$, przyjęto zgodnie 
+z tą konwencją zorientować tak:
+\[
+    (a, -) \quad (b, +).
+\]
+Rozpatrzmy teraz $k$-wymiarową $(k > 0)$ powierzchnię kawałkami gładką $S \subset \mathbb{R}^n$.
+Załóżmy, że dwie kawałkami gładkie powierzchnie $S_{i_1}$ i $S_{i_2}$ z Definicji \ref{def:203} powierzchni $S$ kawałkami 
+gładkiej są zorientowane i ,,przylegają'' do siebie wzdłuż gładkiego kawałka $\Gamma$ powierzchni $(k-1)$-wymiarowej.
+Wtedy na $\Gamma$, jako na brzegu, powstają orientacje zgodne odpowiednio z orientacjami $S_{i_1}$ i $S_{i_2}$.
+Jeśli te dwie orientacje na dowolnym takim żebrze $\Gamma \subset \overline{S_{i_1}} \cap \overline{S_{i_2}}$ są przeciwne 
+to wyjściowe orientację $S_{i_1}$ i $S_{i_2}$ uważa się za zgodne.
+W przypadku gdy $\overline{S_{i_1}} \cap \overline{S_{i_2}}$ jest zbiorem pustym lub posiada wymiar mniejszy niż $(k-1)$, to dowolne orientacje
+$S_{i_1}$ i $S_{i_2}$ uważa się za zgodne.
+
+\begin{defn}
+    Kawałkami gładką $k$-wymiarową $k > 0$ powierzchnię będziemy nazywali orientowalną, jeśli z dokładnościa do skończonej lub przeliczalnej liczby powierzchni 
+    kawałkami gładkich wymiaru nie większego niż $(k-1)$ jest ona sumą gładkich orientowalnych powierzchni $S_i$, na których można wprowadzić jednocześnie wzajemnie zgodne orientacje.
+\end{defn}
+
+Można na przykład łatwo sprawdzić, że brzeg kostki trójwymiarowej jest orientowalną powierzchnią kawałkami gładką.
+
+Przejdziemy teraz do określenia pola powierzchni $k$-wymiarowej powierzchni kawałkami gładkiej, znajdującej się w przestrzeni $\mathbb{R}^n$ $n \geqslant k$.
+Przypomnijmy wpierw, że jeśli $\xi_1, \ldots, \xi_k$ jest układem $k$ wektorów przestrzeni $\mathbb{R}^k$, to objętość 
+$V(\xi_1, \ldots, \xi_k)$ równoległościaniu ,,generowanego'' przez te wektory może być wyliczona przy pomocy wyznacznika 
+\begin{equation}\label{eq:187}
+    V(\xi_1, \ldots, \xi_k) = \det({\xi_i^j})
+\end{equation}
+macierzy $[\xi_i^j]$, której wiersze są utworzone przez współrzędne danych wektorów w pewnej bazie $e_1, \ldots, e_k$ wektorów jednostkowych przestrzeni $\mathbb{R}^k$.
+Zauważmy jednak, że w istocie wzór (\ref{eq:187}) nie wyznacza wprost objętości, a tak zwaną zorientowaną objetość równoległościanu,
+Jeżeli $V \neq 0$ to określona wzorem (\ref{eq:187}) wartość $V$ jest dodatnia lub ujemna w zależności od tego czy bazy $\{e_1, \ldots, e_k\}, \{\xi_1, \ldots, \xi_k\}$
+należą do tej samej czy też do róznych klas orientacji przestrzeni $\mathbb{R}^k$.
+
+Zauważmy teraz, że iloczyn $JJ^*$ macierzy $J$ przez macierz $J^*$ transponowną do niej jest macierzą $G = [g_{ij}]$ iloczynów 
+skalarnych $g_{ij} = <\xi_i | \xi_j >$ danych wektorów, czyli macierzą Grama układu wektorów $\xi_1, \ldots, \xi_k$. W ten sposób 
+\begin{equation}\label{eq:188}
+    \det G = \det (J J^*) = \det J \cdot \det J^* = (\det J)^2
+\end{equation}
+a zatem nieujemną wartość objętości $V(\xi_1, \ldots, \xi_k)$ możemy otrzymać w postaci 
+\begin{equation}\label{eq:189}
+    V(\xi_1, \ldots, \xi_k) = \sqrt{\det ( <\xi_i | \xi_j > )}
+\end{equation}
+
+Niech teraz $r : D \to S \subset \mathbb{R}^n$, gdzie $S$ jest $k$-wymiarową powierzchnią w przestrzeni euklidesowej $\mathbb{R}^n$ zadaną w postaci parametrycznej 
+$r = r(t_1, \ldots, t_k)$, czyli w postaci gładkiej funkcji wektorowej $r(t) = (x_1(t), \ldots, x_n(t))$, a $D$ jest zbiorem otwartym i spójnym w przestrzeni $\mathbb{R}^k$.
+Niech $e_1, \ldots, e_k$ będzie bazą w przestrzeni $\mathbb{R}^k$, która generuje współrzędne $(t_1, \ldots, t_k)$. Ustalmy punkt $t_0 = (t_1^0, \ldots, t_k^0) \in D$
+i weźmy liczby dodatnie $h^1, \ldots, h^k$ na tyle małe, aby równoległościan $I$ generowany przez wektory $H^i e_i \in TD_{t_0}$, $i = 1, \ldots, k$,
+zaczepione w punkcie $t_0$ całkowicie zawierał się w zbiorze $D$.
+
+Na powierzchnie $S$ na mocy przekształcenia $D \to S$ równoległościanowi $I$ odpowiada figura $I_S$, która można nazwać równoległościanem krzywoliniowym. Ponieważ 
+\[
+    r(t_1^0, \ldots, t^0_{i-1}, t^0_i + h^i, t^0_{i + 1}, \ldots, t^0_k) - r(t_1^0, \ldots, t^0_{i-1}, t^0_i, t^0_{i + 1}, \ldots, t^0_k) = \frac{\partial r}{\partial t_i}(t_0)h^i + o(h^i).
+\]
+zatem przemieszczaniu od $t_0$ o wektor $h^ie_i$ odpowiada w $\mathbb{R}^n$ takie przemieszczenie od punktu $r(t_0)$,
+które przy $h^i \to 0$ można z dokładnością do $o(h^i)$ zamienić na $\frac{\partial r}{\partial t_i}(t_0)h^i =: \dot{r_i}h_i$.
+W ten sposób przy małych wartościach $h^i$, $i = 1, \ldots, k$ krzywoliniowy równoległościan $I_S$ różni się mało od równoległościaniu generowanego przez wektory 
+$h^1\dot{r_1}, \ldots, h^k \dot{r_k}$ styczne do powierzchni $S$ w punkcie $r(t_0)$. Zatem objętość $\Delta V$ krzywoliniowego równoległościaniu powinna być bliska 
+objętość wskazanego standardowego równoległościaniu, zatem 
+\begin{equation}\label{eq:190}
+    \Delta V \approx \sqrt{\det (g_{ij})(t_o)}\delta t_1, \ldots, \delta t_k,
+\end{equation}
+gdzie $g_{ij}(t_0) = < \dot{r_i} | \dot{r_j}(t_0)$, $\delta t_i = h^i$, $i,j = 1, \ldots, k$. 
+
+Jeśli teraz całą przestrzeń $\mathbb{R}^k$, w której znajduję się zbiór $D$ w standardowy sposób pokryć $k$-wymiarowymi
+równoległościanami o małej średnicy $d$, a następnie wybrać sposród nich te, które leżą w $D$ oraz wyliczyć zgodne ze wzorem (\ref{def:190}) przybliżoną wartość 
+$k$-wymiarowej objętości ich obrazów i wziąć sumę otrzymanych w ten sposób wartości, to otrzymujemy wielkość
+\[
+    \sum_{\alpha}\sqrt{\det (g_{ij})(t_o)}\delta t_1, \ldots, \delta t_k,
+\]
+którą można uważać za przybliżoną wartość $k$-wymiarowej objętości lub pola rozpatrywanej powierzchni $S$, przy czym przybliżenie to staje się dokładne jeśli $d \to 0$.
+
+\begin{defn}
+    Polem (lub $k$-wymiarową objętościa) gładkiej $k$-wymiarowej powierzchni $S$, znajdującej się w przestrzeni euklidesowej $\mathbb{R}^n$ i określonej w postaci 
+    parametrycznej $D \ni t \to r(t) \in S$ nazywamy wielkość 
+    \begin{equation}\label{eq:191}
+        V_k(S) := \int_D \sqrt{\det (g_{ij})(t_o)}dt_1, \ldots,  d t_k,
+    \end{equation}
+    o ile oczywiście całka w powyższym wzorze istnieje.
+\end{defn}
+
+Rozpatrzmy teraz jak wygląda wzór (\ref{eq:191}) w znanych nam przypadkach szczególnych. Dla $k = 1$ zbiór $D \subset \mathbb{R}^1$ jest 
+przedziałem o pewnych końcach $a, b$ ($a < b$) na prostej $\mathbb{R}$,a $S$ jest w tym przypadku krzywą w $\mathbb{R}^n$. W ten sposób przy $k = 1$ wzór (\ref{eq:191})
+przyjmuje postać 
+\[
+    V_1(S) := \int_{a}^{b}|\dot{r(t)}|dt = \int_{a}^{b}\sqrt{{(\dot{x_1})}^2 + \ldots + {(\dot{x_n})}^2}dt,
+\]
+dla obliczenia długości krzywej gładkiej.
+
+Jeśli $k = n$, to $S$ jest dyfeomorficzną ze zbiorem $D$, $n$-wymiarową powierzchnią w $\mathbb{R}^n$. W tym przypadku macierz Jacobiego $J = x'(t)$ przekształcenia 
+$D \ni (t_1, \ldots, t_n) = t \to r(t) = (x_1, \ldots, x_n)(t) \in S$ jest kwadratowa. Wykorzystując teraz związek (\ref{eq:188}) oraz twierdzenie o zamianie zmiennych
+w całkach wielokrotnych (Twierdzenie \ref{theorem:260} i \ref{theorem:262})
+\[
+    V_n(S) := \int_D \sqrt{ \det(G(t))}dt = \int_D |\det x'(t)| dt = \int_S dx = V(\xi)
+\]
+czyli otrzymaliśmy objętość zbioru $S$ w $\mathbb{R}^n$ (zob. Definicja \ref{def:180}).
+Zauważmy, że dla $k = 2$ i $n = 3$, czyli w przypadku gdy $S$ jest dwuwymiarową powierzchnią w $\mathbb{R}^3$, często zamiast standardowych oznaczeń $g_{ij} = <\dot{r_i}|\dot{r_j}>$
+wykorzystuję się nastepujące $\sigma := V_2(S), E = g_11 = <\dot{r_1}|\dot{r_1}, G := g_22 = <\dot{r_2}|\dot{r_2}$.
+Przy tych oznaczeniach wzór (\ref{eq:191}) przyjmuje postać 
+\[
+    \sigma = \iint_D \sqrt{EG - F^2}dudv.
+\]
+W szczególności, jeśli $u = x, v = y$, a powierzchnia $S$ jest wykresem gładkiej funkcji $z = f(x,y)$ o wartościach rzeczywistych, określonej na zbiorze $D \subset \mathbb{R}^2$
+mierzalnym w sensie Jordana, to można łatwo sprawdzić, że 
+\[
+    \sigma = \iint_D \sqrt{1 + {(f'_x)}^2 + {(f'_y)}^2}dxdy
+\]
+(zob. Tw. \ref{theorem:256} oraz ćw.)
+
+Niniejszy paragraf zakończymy wzmianką o polu powierzchni kawałkami gładkiej.
+
+\begin{defn}
+    Niech $S$ będzie dowolną $k$-wymiarową powierzchnią kawałkami gładką w $\mathbb{R}^n$. Jeśli po ,,wyrzuceniu'' z $S$ 
+    skończonej lub przeliczalnej liczby powierzchni kawałkami gładkich wymiaru nie większego niż $k-1$ ,,rozpada'' się ona na 
+    skończoną lub przeliczalną liczbę kawałkami gładkich parametryzowalnych powierzchni $S_1, \ldots, S_m, \ldots$, to kładziemy 
+    \[
+        V_k(S) := \sum_{\alpha}V_k(S_\alpha)
+    \]
+    (por. [11], cz. II, Uwaga na str.192 oraz Z. 9, s. 196).
+\end{defn}
+
+\subsection{Podstawowe informacje o formach rózniczkowych}
+
+Przypomnijmy wpierw kilka pojęc, które pojawiły się na wykładach z algebry.
+
+\begin{defn}
+    Mówimy, że odwzorowanie $F : X \to Y$ gdzie $X,Y$ są przestrzeniami liniowymi jest formą liniową (lub odwzorowaniem liniowym) jeśli $F$ jest funkcją 
+    jednorodną i addytywną.
+\end{defn}
+
+Niech teraz $F$ będzie odwzorowaniem określonym na iloczynie kartezjańskim $k$ egzemplarzy przestrzeni $X$ o wartościach w przestrzeni $Y$.
+Mówimy, że $F$ jest formą $k$-liniową (lub mniej dokładnie formą wieloliniową), jeśli dla dowolnych ustalonych wektorów $a_1, \ldots, a_{i-1}, a_{i+1}, \ldots, a_k \in X$ wyrażenie 
+\[
+    F(a_1, \ldots, a_{i-1}, a_i, a_{i+1}, \ldots, a_k)
+\]
+traktowane jako funkcja wektorowa $a_i \in X$ jest formą liniową ($i = 1, \ldots, k$).
+
+\begin{defn}
+    Funkcję $G : X \to Y$ postaci 
+    \[
+        G(a) = F(a, a, \ldots, a), \quad \text{dla} \quad a \in X,
+    \]
+    gdzie $F$ jest symetryczną formą $k$-liniową na produkcie $X \times X \times \ldots \times X$ (to znaczy $F(a_1, \ldots, a_k) = F(a_{i_1}, \ldots, a_{i_k})$
+    dla dowolnych wektorów $a_1, \ldots, a_k \in X$ i dowolnej permutacji $i_1, \ldots, i_k$ liczb naturalnych $1, \ldots, k$) będziemy nazywali formą stopnia $k$.
+\end{defn}
+
+\begin{defn}
+    Forma $L : X^k \to Y$, $k$-liniowa, określona na uporządkowanych wektorach $\xi_1, \ldots,  \xi_k$ przestrzeni liniowej $X$
+    i przyjmuje wartości w przestrzeni liniowej $Y$ nazywa się skośnie symetryczną (lub antysymetryczną), jeśli wartośc formy zmienia znak 
+    przy przestawianiu miejscami dowolnej pary jej argumentów $\xi_j$:
+    \[
+        L(\xi_1, \ldots, \xi_i, \ldots, \xi_j, \ldots, \xi_k) = -L(\xi_1, \ldots, \xi_j, \ldots, \xi_i, \ldots, \xi_k).
+    \]
+    W szczególności, jeśli $\xi_i = \xi_j$, to niezależnie od pozostałych wektorów wartość formy będzie równa zero.
+\end{defn}
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Iloczyn wektorowy $[\xi_1, \xi_2]$ wektorów przestrzeni $\mathbb{R}^3$ jest formą dwuliniową skośnie symetryczną o wartościach w przestrzeni liniowej $\mathbb{R}^3$.
+        \item [(b)]
+            Zorientowana objętośc równoległościaniu $V(\xi_1, \ldots, \xi_k)$ określona wzorem (\ref{eq:187}) jest skośnie symetryczną $k$-liniową formą określoną w $\mathbb{R}^k$
+            o wartościach rzeczywistych. (zob. ćw.)
+    \end{itemize}
+\end{ex}
+
+\begin{defn}
+    Iloczynem zewnętrznym form liniowych $L_1, \ldots, L_k \in L(\mathbb{R}^n, \mathbb{R})$ nazywamy formę $k$-liniową $L_1, \land, \ldots, L_k$ określoną następująco 
+    \begin{equation}\label{eq:192}
+        L_1 \land \ldots \land L_k(\xi_1, \ldots, \xi_k) = \left|\begin{array}{ccc}
+            L_1(\xi_1) & \cdots & L_k(\xi_1) \\
+           \vdots & \ddots & \vdots \\
+            L_1(\xi_k) & \cdots & L_k(\xi_k)
+            \end{array}\right| = \det{(L_j(\xi_i))}
+    \end{equation}
+\end{defn}
+
+Można łatwo sprawdzić, że iloczyn zewnętrzny określony wzorem (\ref{eq:192}) posiada następujące własności:
+
+\begin{itemize}
+    \item $L_1 \land L_2 = -L_2 \land L_1$,
+    \item $(L_1 + L_2) \land L_3 = L_1 \land L_3 + L_2 \land L_3$,
+\end{itemize}
+(zob. ćw.)
+
+\begin{ex}
+    \begin{itemize}
+        \item [(a)]
+            Niech $\pi_i \in \L(\mathbb{R}^3, \mathbb{R})$, $i =1,2,3$ będzie projekcją, to znaczy $\pi_i(\xi) = \xi^i$, gdzie $\xi = (\xi_1, \xi_2, \xi_3)$. Można 
+            łatwo sprawdzić, że 
+            \[
+                \begin{aligned}
+                    \pi_1([\xi_1, \xi_2]) = \pi_2 \land \pi_3(\xi_1, \xi_2), \\
+                    \pi_2([\xi_1, \xi_2]) = \pi_3 \land \pi_1(\xi_1, \xi_2), \\
+                    \pi_3([\xi_1, \xi_2]) = \pi_1 \land \pi_2(\xi_1, \xi_2), \\
+                \end{aligned}
+            \]
+        \item [(b)]
+            Niech $f : D \to \mathbb{R}$ będzie funkcją różniczkowalną w pewnym punkcie $x_0 \in D$, gdzie $D$ - otwarty podzbiór $\mathbb{R}^n$.
+            Wiadomo, że różniczka $df(x_0)$ jest funkcją liniową określoną na wektorach $\xi \in TD_{x_0}$.
+            Przypomnijmy, że jeśli $x_1, \ldots, x_n$ są współrzednymi w $\mathbb{R}^n$, a $\xi = (\xi_1, \ldots, \xi_n)$, to 
+            \[
+                df(x_0)(\xi) = \frac{\partial f}{\partial x_1}(x_0)\xi_1 + \ldots + \frac{\partial f}{\partial x_n}(x_0)\xi_n.
+            \]
+            W szczególności jeśli $dx_i(\xi) = \xi_i$ lub bardziej formalnie $dx_i(x_0)(\xi) = \xi_i$.
+            Jeśli $f_1, \ldots, f_k$ są funkcjami o wartościach rzeczywistych określonych w $D$ i różniczkowalnych w punkcie $x_0 \in D$, to zgodnie ze wzorem (\ref{eq:192}) otrzumujemy 
+            \[
+                df_1 \land \ldots \land df_k(\xi_1, \ldots, \xi_k) = \left|\begin{array}{ccc}
+                    df_1(\xi_1) & \cdots & df_k(\xi_1) \\
+                   \vdots & \ddots & \vdots \\
+                    df_1(\xi_k) & \cdots & df_k(\xi_k)
+                    \end{array}\right|, \quad \xi_1, \ldots, \xi_k \in TD_{x_0}
+            \]
+            i w szczególności 
+            \[
+                dx_{i_1} \land \ldots \land dx_{i_k}(\xi_1, \ldots, \xi_k) = \left|\begin{array}{ccc}
+                    \xi_1^{i_1} & \cdots & \xi_1^{i_k} \\
+                   \vdots & \ddots & \vdots \\
+                   \xi_k^{i_1}  & \cdots & \xi_k^{i_k} 
+                    \end{array}\right|
+            \]
+            W ten sposób z form dwuliniowych okreslonych na przestrzeni liniowej $TD_{x_0}$ określimy formę $k$-liniową skośnie symetryczną.
+    \end{itemize}
+\end{ex}
+
+Jeśli $f \in C^1(D, \mathbb{R})$, to w dowolnym punkcie $x \in D$ możemy okreslić różniczkę $df(x)$. Przy przejściu od punktu do punktu w zbiorze $D$
+forma $df(x) = f'(x)$ zmienia się. W ten sposób gładka skalarna funkcja $f : D \to \mathbb{R}$ generuje w każdym punkcie zbioru $D$ liniową formę $df(x)$.
+
+\begin{defn}
+    Mówimy, że w zbiorze $D \subset \mathbb{R}^n$ jest określona różniczkowa $p$-forma $\omega$ o wartościach rzeczywistych, jeśli w każdym punkcie $x \in D$
+    jest określona forma skośnie symetryczną $\omega(x) : (TD_{x})^p \to \mathbb{R}$. Liczbę $p$ nazywamy porządkiem różniczkowej $p$- formy $\omega$.
+\end{defn}
 
 \end{justify}
 \end{document} 
